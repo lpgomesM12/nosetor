@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Enderecos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome rua</th>
+      <th>Desc quadra</th>
+      <th>Desc lote</th>
+      <th>Desc numero</th>
+      <th>Desc complemento</th>
+      <th>Desc cep</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>St bairro</th>
+      <th>St cidade</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_enderecos.each do |st_endereco| %>
+      <tr>
+        <td><%= st_endereco.nome_rua %></td>
+        <td><%= st_endereco.desc_quadra %></td>
+        <td><%= st_endereco.desc_lote %></td>
+        <td><%= st_endereco.desc_numero %></td>
+        <td><%= st_endereco.desc_complemento %></td>
+        <td><%= st_endereco.desc_cep %></td>
+        <td><%= st_endereco.latitude %></td>
+        <td><%= st_endereco.longitude %></td>
+        <td><%= st_endereco.st_bairro %></td>
+        <td><%= st_endereco.st_cidade %></td>
+        <td><%= link_to 'Show', st_endereco %></td>
+        <td><%= link_to 'Edit', edit_st_endereco_path(st_endereco) %></td>
+        <td><%= link_to 'Destroy', st_endereco, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St endereco', new_st_endereco_path %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Cidades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome cidade</th>
+      <th>St estado</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_cidades.each do |st_cidade| %>
+      <tr>
+        <td><%= st_cidade.nome_cidade %></td>
+        <td><%= st_cidade.st_estado %></td>
+        <td><%= link_to 'Show', st_cidade %></td>
+        <td><%= link_to 'Edit', edit_st_cidade_path(st_cidade) %></td>
+        <td><%= link_to 'Destroy', st_cidade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St cidade', new_st_cidade_path %>

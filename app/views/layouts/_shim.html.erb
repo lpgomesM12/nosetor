@@ -1,0 +1,23 @@
+<div class="row">
+	<div class="col-lg-2">
+	</div>
+	<div class="col-lg-10">
+		<div class="panel panel-default" style="margin-top:60px">
+			 <div class="panel-heading" style="background:#fffbcf" align="center"> <span aria-hidden="true"><b>Mais pesquisadas</b></span>
+			 </div>
+		  <div class="panel-body">
+
+             <% @categorias = StCategory.all%>
+
+          <% @categorias.each do |categoria| %>
+		    <a href="#"><b><%=categoria.nome_categoria%></b></a> </br>
+	       <%end%>
+            <br>
+		     <button type="button"  class="btn btn-default" style="background:#fff79d"  onclick="$('#myModal').modal('show');" data-dismiss="modal">
+             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Mais Categorias
+		     </button>
+		  </div>
+
+		</div>
+	</div>
+</div>

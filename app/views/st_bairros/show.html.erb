@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome bairro:</strong>
+  <%= @st_bairro.nome_bairro %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @st_bairro.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @st_bairro.longitude %>
+</p>
+
+<p>
+  <strong>St cidade:</strong>
+  <%= @st_bairro.st_cidade %>
+</p>
+
+<%= link_to 'Edit', edit_st_bairro_path(@st_bairro) %> |
+<%= link_to 'Back', st_bairros_path %>

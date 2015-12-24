@@ -1,0 +1,86 @@
+
+
+<%
+$i = 0
+$num = 10
+%>
+
+<div class="panel-group" style="margin-top:60px">
+ <%while $i < $num  do%>
+
+
+   <div id="panelCentral" class="panel panel-default">
+    <div class="panel-body">
+     <div class="media">
+          <a href="#" class="pull-right" >
+             <%= image_tag ("avatar-tiny.jpg")%>
+          </a>
+          <div class="media-body">
+              <h4 class="media-heading">Jhon Carter <small><i>Posted on January 10, 2014</i></small></h4>
+              <p>Excellent feature! I love it. One day I'm definitely going to put this Bootstrap component into use and I'll let you know once I do.</p>
+          </div>
+      </div>
+    </div>
+
+</div>
+    <% $i += 1%>
+<%end%>
+</div>
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Categorias</h4>
+      </div>
+      <div class="modal-body">
+
+        Pesquisa por categorias.....
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal1" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Setores</h4>
+      </div>
+      <div class="modal-body">
+
+        Pesquisa por categorias.....
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style type="text/css">
+#panelCentral:hover{
+ background-color:#fffbcf;
+}
+
+
+</style>

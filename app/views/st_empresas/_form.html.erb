@@ -1,0 +1,55 @@
+<%= form_for(@st_empresa) do |f| %>
+  <% if @st_empresa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@st_empresa.errors.count, "error") %> prohibited this st_empresa from being saved:</h2>
+
+      <ul>
+      <% @st_empresa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome_empresa %><br>
+    <%= f.text_field :nome_empresa %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_anuncioempresa %><br>
+    <%= f.text_field :desc_anuncioempresa %>
+  </div>
+  <div class="field">
+    <%= f.label :tele_telefone1 %><br>
+    <%= f.text_field :tele_telefone1 %>
+  </div>
+  <div class="field">
+    <%= f.label :tele_telefone2 %><br>
+    <%= f.text_field :tele_telefone2 %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_palavrachave %><br>
+    <%= f.text_area :desc_palavrachave %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_cnpj %><br>
+    <%= f.text_field :desc_cnpj %>
+  </div>
+  <div class="field">
+    <%= f.label :st_endereco_id %><br>
+    <%= f.text_field :st_endereco_id %>
+  </div>
+  <div class="field">
+    <%= f.label :st_category_id %><br>
+    <%= f.text_field :st_category_id %>
+  </div>
+
+  <div class="field">
+   <%= f.file_field :logo %>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

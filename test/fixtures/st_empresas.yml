@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_empresa: MyString
+  desc_anuncioempresa: MyString
+  tele_telefone1: MyString
+  tele_telefone: 
+  desc_palavrachave: MyText
+  desc_cnpj: MyString
+  st_endereco_id: 
+  st_category_id: 
+
+two:
+  nome_empresa: MyString
+  desc_anuncioempresa: MyString
+  tele_telefone1: MyString
+  tele_telefone: 
+  desc_palavrachave: MyText
+  desc_cnpj: MyString
+  st_endereco_id: 
+  st_category_id: 

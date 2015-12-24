@@ -1,0 +1,57 @@
+<%= form_for(@st_endereco) do |f| %>
+  <% if @st_endereco.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@st_endereco.errors.count, "error") %> prohibited this st_endereco from being saved:</h2>
+
+      <ul>
+      <% @st_endereco.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome_rua %><br>
+    <%= f.text_field :nome_rua %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_quadra %><br>
+    <%= f.text_field :desc_quadra %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_lote %><br>
+    <%= f.text_field :desc_lote %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_numero %><br>
+    <%= f.text_field :desc_numero %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_complemento %><br>
+    <%= f.text_field :desc_complemento %>
+  </div>
+  <div class="field">
+    <%= f.label :desc_cep %><br>
+    <%= f.text_field :desc_cep %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="field">
+    <%= f.label :st_bairro_id %><br>
+    <%= f.text_field :st_bairro_id %>
+  </div>
+  <div class="field">
+    <%= f.label :st_cidade_id %><br>
+    <%= f.text_field :st_cidade_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+#development:
+#  <<: *default
+#  database: finan_development
+
+
+
+development:
+  <<: *default
+  database: setor_development
+  timeout: 5000
+  username: postgres
+  password: sivic
+
+
+
+production:
+  <<: *default
+  database: setor_production
+  username: finan
+  password: <%= ENV['FINAN_DATABASE_PASSWORD'] %>

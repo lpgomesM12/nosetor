@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome empresa:</strong>
+  <%= @st_empresa.nome_empresa %>
+</p>
+
+<p>
+  <strong>Desc anuncioempresa:</strong>
+  <%= @st_empresa.desc_anuncioempresa %>
+</p>
+
+<p>
+  <strong>Tele telefone1:</strong>
+  <%= @st_empresa.tele_telefone1 %>
+</p>
+
+<p>
+  <strong>Tele telefone:</strong>
+  <%= @st_empresa.tele_telefone %>
+</p>
+
+<p>
+  <strong>Desc palavrachave:</strong>
+  <%= @st_empresa.desc_palavrachave %>
+</p>
+
+<p>
+  <strong>Desc cnpj:</strong>
+  <%= @st_empresa.desc_cnpj %>
+</p>
+
+<p>
+  <strong>St endereco:</strong>
+  <%= @st_empresa.st_endereco %>
+</p>
+
+<p>
+  <strong>St category:</strong>
+  <%= @st_empresa.st_category %>
+</p>
+
+<%= link_to 'Edit', edit_st_empresa_path(@st_empresa) %> |
+<%= link_to 'Back', st_empresas_path %>

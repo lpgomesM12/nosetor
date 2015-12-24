@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Empresas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome empresa</th>
+      <th>Desc anuncioempresa</th>
+      <th>Tele telefone1</th>
+      <th>Tele telefone</th>
+      <th>Desc palavrachave</th>
+      <th>Desc cnpj</th>
+      <th>St endereco</th>
+      <th>St category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_empresas.each do |st_empresa| %>
+      <tr>
+        <td><%= st_empresa.nome_empresa %></td>
+        <td><%= st_empresa.desc_anuncioempresa %></td>
+        <td><%= st_empresa.tele_telefone1 %></td>
+        <td><%= st_empresa.tele_telefone %></td>
+        <td><%= st_empresa.desc_palavrachave %></td>
+        <td><%= st_empresa.desc_cnpj %></td>
+        <td><%= st_empresa.st_endereco %></td>
+        <td><%= st_empresa.st_category %></td>
+        <td><%= link_to 'Show', st_empresa %></td>
+        <td><%= link_to 'Edit', edit_st_empresa_path(st_empresa) %></td>
+        <td><%= link_to 'Destroy', st_empresa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St empresa', new_st_empresa_path %>

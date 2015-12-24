@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome rua:</strong>
+  <%= @st_endereco.nome_rua %>
+</p>
+
+<p>
+  <strong>Desc quadra:</strong>
+  <%= @st_endereco.desc_quadra %>
+</p>
+
+<p>
+  <strong>Desc lote:</strong>
+  <%= @st_endereco.desc_lote %>
+</p>
+
+<p>
+  <strong>Desc numero:</strong>
+  <%= @st_endereco.desc_numero %>
+</p>
+
+<p>
+  <strong>Desc complemento:</strong>
+  <%= @st_endereco.desc_complemento %>
+</p>
+
+<p>
+  <strong>Desc cep:</strong>
+  <%= @st_endereco.desc_cep %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @st_endereco.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @st_endereco.longitude %>
+</p>
+
+<p>
+  <strong>St bairro:</strong>
+  <%= @st_endereco.st_bairro %>
+</p>
+
+<p>
+  <strong>St cidade:</strong>
+  <%= @st_endereco.st_cidade %>
+</p>
+
+<%= link_to 'Edit', edit_st_endereco_path(@st_endereco) %> |
+<%= link_to 'Back', st_enderecos_path %>
