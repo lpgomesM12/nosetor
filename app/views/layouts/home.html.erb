@@ -8,22 +8,13 @@
     <%= javascript_include_tag "application" %>
    <%= csrf_meta_tags %>
 
-     <%= render 'layouts/menu' %>
+     <%= render 'layouts/menuhome' %>
 </head>
 <body style="background:#f7f7f8">
-            
-	<div class="row"> <!-- 3 + 6 + 3 = 12 -->
-	    <div class="col-md-3"> 
-         	<%= render 'layouts/shim' %>
-	    </div>
-	    <div class="col-md-6"> 
-	    	 <%= yield %>
-	    </div>
-	    <div class="col-md-3"> </div>
-	</div>
-
-
+     
+  <div class="container">
+     <%= yield %>
+  </div>
 
 </body>
 </html>
-

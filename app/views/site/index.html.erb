@@ -1,32 +1,31 @@
-
-
-<%
-$i = 0
-$num = 10
-%>
-
 <div class="panel-group" style="margin-top:60px">
- <%while $i < $num  do%>
-
+  <% @st_empresas.each do |empresa| %>
 
    <div id="panelCentral" class="panel panel-default">
     <div class="panel-body">
      <div class="media">
           <a href="#" class="pull-right" >
-             <%= image_tag ("avatar-tiny.jpg")%>
+             <%= image_tag (empresa.logo.url(:thumb))%>
           </a>
           <div class="media-body">
-              <h4 class="media-heading">Jhon Carter <small><i>Posted on January 10, 2014</i></small></h4>
-              <p>Excellent feature! I love it. One day I'm definitely going to put this Bootstrap component into use and I'll let you know once I do.</p>
+              <a href="#"><h4 class="media-heading" style ="color:#555555"><strong><%=empresa.nome_empresa%><!--<small><i>Posted on January 10, 2014</i></small>--></strong></h4> </a>
+              <small style ="font-size:12px;color:#555555"><%=empresa.st_endereco.nome_rua%> Quadra <%=empresa.st_endereco.desc_quadra%> Lote <%=empresa.st_endereco.desc_lote%> - <%=empresa.st_endereco.st_bairro.nome_bairro%>, <%=empresa.st_endereco.st_cidade.nome_cidade %> - <%=empresa.st_endereco.st_cidade.st_estado.nome_estado%></small><br>
           </div>
       </div>
     </div>
-
 </div>
-    <% $i += 1%>
 <%end%>
 </div>
 
+
+
+  <%= form_tag(pesquisa_path, :method=>'GET') do %>
+
+      <input type="hidden" id="categoria" name="categoria">
+      <input type="hidden" id="q" name="q" >
+     <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+
+  <%end%>
 
 
 
@@ -83,4 +82,19 @@ $num = 10
 }
 
 
+  a:hover {
+  color: #0088cc;
+  background-color:transparent ;
+ }
+
 </style>
+
+
+<script type="text/javascript">
+  
+  function Pesquisar(id){
+     $("#categoria").val(id);
+     $("#BotaoPesquisa").click();
+   }
+
+</script>

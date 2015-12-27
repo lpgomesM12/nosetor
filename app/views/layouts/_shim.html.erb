@@ -10,7 +10,7 @@
              <% @categorias = StCategory.all%>
 
           <% @categorias.each do |categoria| %>
-		    <a href="#"><b><%=categoria.nome_categoria%></b></a> </br>
+		     <a href="javascript:Pesquisar(<%=categoria.id%>);"><b><%=categoria.nome_categoria%></b></a><br>
 	       <%end%>
             <br>
 		     <button type="button"  class="btn btn-default" style="background:#fff79d"  onclick="$('#myModal').modal('show');" data-dismiss="modal">
