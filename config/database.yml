@@ -4,18 +4,18 @@ default: &default
   encoding: unicode
   pool: 5
 
-development:
-  <<: *default
-  database: setor_development
-
-
-
 #development:
 #  <<: *default
 #  database: setor_development
-#  timeout: 5000
-#  username: postgres
-#  password: sivic
+
+
+
+development:
+  <<: *default
+  database: setor_development
+  timeout: 5000
+  username: postgres
+  password: sivic
 
 
 

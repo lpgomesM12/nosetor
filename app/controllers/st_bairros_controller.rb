@@ -1,6 +1,17 @@
 class StBairrosController < ApplicationController
   before_action :set_st_bairro, only: [:show, :edit, :update, :destroy]
 
+  
+  def search
+     #bairro = StBairro.all
+     #bairro_json = bairro.map{|item|{:nome_bairro => item.nome_bairro}}
+     #render :json => bairro_json
+     #@bairro = StBairro.all
+     #render json: @bairro.map
+     @results = StBairro.search(params[:term])
+
+  end
+
   # GET /st_bairros
   # GET /st_bairros.json
   def index

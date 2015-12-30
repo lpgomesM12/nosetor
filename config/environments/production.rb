@@ -76,4 +76,29 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
+   config.assets.precompile += %w( '.woff', '.eot', '.svg', '.ttf' )
+  # Do not dump schema after migrations.
+  #config.active_record.dump_schema_after_migration = false
+
+
+  # Precompile additional assets.
+  # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
+  # config.assets.precompile += %w( search.js )
+  config.assets.paths << Rails.root.join("app","assets","fonts","audio")
+  
+
+
+    #set perpeclip opload  imeans to amazon s3
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['S3_BUCKET_NAME'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    }
+  }
+
 end

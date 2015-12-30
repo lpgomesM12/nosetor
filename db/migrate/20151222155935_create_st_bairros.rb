@@ -4,6 +4,7 @@ class CreateStBairros < ActiveRecord::Migration
       t.string :nome_bairro
       t.string :latitude
       t.string :longitude
+      t.boolean :flag_ativo
       t.references :st_cidade, index: true, foreign_key: true
 
       t.timestamps null: false

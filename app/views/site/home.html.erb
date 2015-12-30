@@ -1,54 +1,74 @@
-<div class="panel panel-default"  style="margin-top:60px">
+
+
+<div class="panel panel-default"  style="margin-top:200px">
   	  <div class="panel-body">
   	  <div class="row">
 	  	  <div class="col-lg-3">
 	  	  </div>
-	  	  <div class="col-lg-6">
-	               <input type="text" id="estado" name="estado" class="form-control" aria-label="...">
+	  	  <div class="col-lg-5">
+	            <input type="text" id="cidade" name="cidade" disabled value="<%=@st_cidade.nome_cidade%>" class="form-control" aria-label="...">
 	       </div>
+	  	  <div class="col-lg-1">
+	               <input type="text" id="estado" name="estado" disabled value="<%=@st_cidade.st_estado.sigl_estado%>" class="form-control" aria-label="...">
+	       </div>
+
 	   </div>
 	   <br>
 	   <div class="row">
 	  	  <div class="col-lg-3">
 	  	  </div>
 	  	  <div class="col-lg-6">
-	               <input type="text" id="cidade" name="cidade" class="form-control" aria-label="...">
+	         <input type="text" id="nome_bairro" class="form-control" placeholder="Busque pelo setor" aria-label="...">
 	       </div>
 	   </div>
-	   <br>
-	   <div class="row">
-	  	  <div class="col-lg-3">
+    <br>
+		<div class="row">
+	     <div class="col-lg-3">
 	  	  </div>
-	  	  <div class="col-lg-6">
-	               <input type="text" id="bairro" nome="bairro" class="form-control" aria-label="...">
-	       </div>
-	   </div>
+		  	 <div class="col-lg-6">
+	           <div class="btn-group btn-group-justified" role="group" aria-label="...">
+				  <div class="btn-group" role="group">
+				    <button type="button" onclick="Pesquisar()" id="Pesquisa" class="btn btn-primary">Pesquisar</button>
+				  </div>
+				</div>
+	         </div>
+	    </div>
      </div>
-</div>               
+</div>   
+
+
+  <%= form_tag(pesquisa_path, :method=>'GET') do %>
+     <input type="hidden" id="bairro" name="bairro" >
+     <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+
+  <%end%>
 
 
 
+<script type="text/javascript">	
+
+	$(document).ready(function() {
+	     $('#nome_bairro').autocomplete({
+	     source: '/busca',
+	     dataType: 'json',
+	     minLength: 1,
+	     change: function(event, ui) {
+	     if (!ui.item) {
+	     $('#nome_bairro').val('');
+	   }
+	 },
+
+	select: function(event, ui) {
+	if (ui.item) {
+	  $("#bairro").val(ui.item.id);
+	  }
+	 }
+	});
+ });
 
 
-<script type="text/javascript">
-	
-
-$(document).ready(function() {
-     $('#bairro').autocomplete({
-     source: '/busca',
-     dataType: 'json',
-     minLength: 3,
-     change: function(event, ui) {
-     if (!ui.item) {
-     $('#bairro').val('');
+function Pesquisar(){
+     $("#BotaoPesquisa").click();
    }
- },
 
-select: function(event, ui) {
-if (ui.item) {
-	window.location.href = '/livro/'+ui.item.id;
-  }
- }
-});
-});
 </script>

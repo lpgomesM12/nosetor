@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223154251) do
+ActiveRecord::Schema.define(version: 20151229153123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,13 @@ ActiveRecord::Schema.define(version: 20151223154251) do
     t.string   "nome_bairro"
     t.string   "latitude"
     t.string   "longitude"
+    t.boolean  "flag_ativo"
     t.integer  "st_cidade_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
+  add_index "st_bairros", ["nome_bairro"], name: "index_st_bairros_on_nome_bairro", using: :btree
   add_index "st_bairros", ["st_cidade_id"], name: "index_st_bairros_on_st_cidade_id", using: :btree
 
   create_table "st_categories", force: :cascade do |t|
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151223154251) do
   create_table "st_cidades", force: :cascade do |t|
     t.string   "nome_cidade"
     t.integer  "st_estado_id"
+    t.boolean  "flag_ativo"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -97,6 +100,7 @@ ActiveRecord::Schema.define(version: 20151223154251) do
   create_table "st_estados", force: :cascade do |t|
     t.string   "nome_estado"
     t.string   "sigl_estado"
+    t.boolean  "flag_ativo"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

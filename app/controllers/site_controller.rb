@@ -11,9 +11,8 @@ class SiteController < ApplicationController
   end
 
   def home
+   
+   @st_cidade = StCidade.find(977)
    render layout: "home"
-
   end
-
-
 end

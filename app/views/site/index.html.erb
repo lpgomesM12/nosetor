@@ -23,7 +23,7 @@
 
       <input type="hidden" id="categoria" name="categoria">
       <input type="hidden" id="q" name="q" >
-     <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+      <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
 
   <%end%>
 
@@ -94,6 +94,11 @@
   
   function Pesquisar(id){
      $("#categoria").val(id);
+     $("#BotaoPesquisa").click();
+   }
+
+  function PesquisarQ(q){
+     $("#q").val(q);
      $("#BotaoPesquisa").click();
    }
 
