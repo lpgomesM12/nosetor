@@ -1,3 +1,15 @@
+GIT
+  remote: git://github.com/heroku/rails3_serve_static_assets.git
+  revision: 84910ceb4ca2851d650e66d3b22f5008acf253f8
+  specs:
+    rails3_serve_static_assets (0.0.1)
+
+GIT
+  remote: git://github.com/heroku/rails_log_stdout.git
+  revision: f9a92758f2d5dca5a88bf899a83256302f16ab6c
+  specs:
+    rails_log_stdout (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -37,6 +49,11 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
+    aws-sdk (1.66.0)
+      aws-sdk-v1 (= 1.66.0)
+    aws-sdk-v1 (1.66.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.10)
     bcrypt (3.1.10-x64-mingw32)
     binding_of_caller (0.7.2)
@@ -122,6 +139,11 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
     railties (4.2.5)
       actionpack (= 4.2.5)
       activesupport (= 4.2.5)
@@ -153,8 +175,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     tzinfo-data (1.2015.7)
@@ -175,6 +195,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  aws-sdk (< 2.0)
   byebug
   coffee-rails (~> 4.1.0)
   devise
@@ -184,10 +205,12 @@ DEPENDENCIES
   paperclip (~> 4.2)
   pg (~> 0.15)
   rails (= 4.2.5)
+  rails3_serve_static_assets!
+  rails_12factor
+  rails_log_stdout!
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
-  turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
