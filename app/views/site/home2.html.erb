@@ -1,0 +1,105 @@
+<div class="panel panel-default"  style="margin-top:100px">
+  	  <div class="panel-body">
+  	  <div class="row">
+	  	  <div class="col-lg-12">
+	  	  	<h3>Encontre tudo perto de você de forma simples rapido </h3>
+	       </div>
+	   </div>
+
+     </div>
+</div>  
+
+
+<div class="panel panel-default">
+  	  <div class="panel-body">
+  	  <div class="row">
+	  	  <div class="col-lg-3">
+	  	  </div>
+	  	  <div class="col-lg-5">
+	            <input type="text" id="cidade" name="cidade" disabled value="<%=@st_cidade.nome_cidade%>" class="form-control" aria-label="...">
+	       </div>
+	  	  <div class="col-lg-1">
+	               <input type="text" id="estado" name="estado" disabled value="<%=@st_cidade.st_estado.sigl_estado%>" class="form-control" aria-label="...">
+	       </div>
+
+	   </div>
+	   <br>
+
+         <% @bairros = StBairro.all%>
+          <% @bairros.each do |bairro| %>
+		     <a href="javascript:SelecionarBairro(<%=bairro.id%>);"><b><%=bairro.nome_bairro%></b></a><br>
+	      <%end%>
+
+	   <!--<div class="row">
+	  	  <div class="col-lg-3">
+	  	  </div>
+	  	  <div class="col-lg-6">
+	         <input type="text" id="nome_bairro" class="form-control" placeholder="Busque pelo setor" aria-label="...">
+	       </div>
+	   </div>-->
+    <br>
+		<!--<div class="row">
+	     <div class="col-lg-3">
+	  	  </div>
+		  	 <div class="col-lg-6">
+	           <div class="btn-group btn-group-justified" role="group" aria-label="...">
+				  <div class="btn-group" role="group">
+				    <button type="button" onclick="Pesquisar()" id="Pesquisa" class="btn btn-primary">Pesquisar</button>
+				  </div>
+				</div>
+	         </div>
+	    </div>-->
+     </div>
+</div>   
+
+
+  <%= form_tag(pesquisa_path, :method=>'GET') do %>
+     <input type="hidden" id="bairro" name="bairro" >
+     <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+
+  <%end%>
+
+
+
+<script type="text/javascript">	
+
+//	$(document).ready(function() {
+//	     $('#nome_bairro').autocomplete({
+//	     source: '/busca',
+//	     dataType: 'json',
+//	     minLength: 1,
+//	     change: function(event, ui) {
+//	     if (!ui.item) {
+//	     $('#nome_bairro').val('');
+//	   }
+//	 },
+
+//	select: function(event, ui) {
+//	if (ui.item) {
+//	  $("#bairro").val(ui.item.id);
+//	  }
+//	 }
+//	});
+// });
+
+
+//function Pesquisar(){
+//    $("#BotaoPesquisa").click();
+//   }
+
+function SelecionarBairro(id){
+	$("#bairro").val(id);
+	$("#BotaoPesquisa").click();
+
+}
+
+
+</script>
+
+
+<style type="text/css">
+  a:hover {
+  color: #0088cc;
+  background-color:transparent ;
+ }
+</style>

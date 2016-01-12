@@ -11,45 +11,181 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome_empresa %><br>
-    <%= f.text_field :nome_empresa %>
+
+   <div class="row">
+    <div class="col-lg-6">
+     <%= f.label :Categoria %><br>
+     <%= f.select :st_category_id, options_from_collection_for_select(StCategory.all, 'id',  'nome_categoria', @st_empresa.id),{:include_blank => true}, {:class => 'form-control'} %>
+    </div>
+     <div class="col-lg-6">
+        <%= f.label :nome_empresa %><br>
+        <%= f.text_field :nome_empresa, :class => 'form-control'%>
+      </div>
+  </div> 
+
+   <div class="row">
+      <div class="col-lg-12">
+        <%= f.label :Descricao_para_o_anuncio %><br>
+        <%= f.text_field :desc_anuncioempresa, :class => 'form-control' %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-3">
+        <%= f.label :Telefone1 %><br>
+        <%= f.text_field :tele_telefone1, :class => 'form-control' %>
+      </div>
+      <div class="col-lg-3">
+        <%= f.label :Telefone2 %><br>
+        <%= f.text_field :tele_telefone2, :class => 'form-control'  %>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-12">
+        <%= f.label :Palavras_chaves %><br>
+        <%= f.text_area :desc_palavrachave, :class => 'form-control'  %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4">
+        <%= f.label :CNPJ %><br>
+        <%= f.text_field :desc_cnpj, :class => 'form-control' %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+     <div class="col-lg-6">
+        <%= f.file_field :logo %>
+       </div>
+    </div>
+    <hr>
+<div class="row">  
+ <div class="col-lg-2">
+  <h4>Endereço</h4>
+ </div>
+ </div>
+
+
+
+<%= f.fields_for :st_endereco do |endereco| %>
+
+
+<div class="row">
+    <div class="col-lg-6">
+      <label>Bairro</label>
+
+          <input type="text" id="nome_bairro" class="form-control" placeholder="Busque pelo bairro" aria-label="...">
+            <%= endereco.hidden_field :st_bairro_id%> 
+    </div>
+</div>
+<div class="row">  
+    <div class="col-lg-8">
+      <%= endereco.label :nome_rua %><br>
+      <%= endereco.text_field :nome_rua, :class => 'form-control' %>
+    </div>
+    <div class="col-lg-2">
+      <%= endereco.label :Quadra %><br>
+      <%= endereco.text_field :desc_quadra, :class => 'form-control' %>
+    </div>
+</div>
+<br>
+ <div class="row">
+  <div class="col-lg-5">
+    <%= endereco.label :Complemento %><br>
+    <%= endereco.text_field :desc_complemento, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :desc_anuncioempresa %><br>
-    <%= f.text_field :desc_anuncioempresa %>
+  <div class="col-lg-2">
+    <%= endereco.label :CEP %><br>
+    <%= endereco.text_field :desc_cep, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :tele_telefone1 %><br>
-    <%= f.text_field :tele_telefone1 %>
+</div>
+<br>
+ <div class="row">
+  <div class="col-lg-4">
+    <%= endereco.label :Latitude %><br>
+    <%= endereco.text_field :latitude, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :tele_telefone2 %><br>
-    <%= f.text_field :tele_telefone2 %>
+  <div class="col-lg-4">
+    <%= endereco.label :Longitude %><br>
+    <%= endereco.text_field :longitude, :class => 'form-control' %>
   </div>
-  <div class="field">
-    <%= f.label :desc_palavrachave %><br>
-    <%= f.text_area :desc_palavrachave %>
-  </div>
-  <div class="field">
-    <%= f.label :desc_cnpj %><br>
-    <%= f.text_field :desc_cnpj %>
-  </div>
-  <div class="field">
-    <%= f.label :st_endereco_id %><br>
-    <%= f.text_field :st_endereco_id %>
-  </div>
-  <div class="field">
-    <%= f.label :st_category_id %><br>
-    <%= f.text_field :st_category_id %>
+</div>
+<br>
+<div class="row">
+  <%=  f.fields_for :st_estado do |estado| %>
+      <div class="col-lg-4">
+        <%= estado.label :Estado %><br>
+        <%= estado.select :st_estado_id, options_from_collection_for_select(StEstado.all, 'id', 'nome_estado',@st_estado), {:include_blank => true}, {:onchange => 'changeState(this)', :class => 'form-control' }%>
+      </div>
+  <%end%>
+  <%if @st_cidade %>
+        <div class="col-lg-4">
+          <%= endereco.label :Cidade %>
+          <%= endereco.select :st_cidade_id, options_from_collection_for_select(@st_cidade, 'id', 'nome_cidade',@st_cidade_setada),{}, :class => 'form-control'%>
+        </div>
+  <%else%>
+
+  <div class="col-lg-4">
+          <%= endereco.label :Cidade %><br>
+          <%= endereco.select :st_cidade_id, [], {}, :class => 'form-control'%>
   </div>
 
-  <div class="field">
-   <%= f.file_field :logo %>
-  </div>
+   <%end%>
+<%end%>
 
-  
+
+ </div>
+ <br>
+
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function() {
+         $('#nome_bairro').autocomplete({
+         source: '/busca',
+         dataType: 'json',
+         minLength: 1,
+         change: function(event, ui) {
+         if (!ui.item) {
+         $('#nome_bairro').val('');
+       }
+     },
+
+    select: function(event, ui) {
+    if (ui.item) {
+      $("#st_empresa_st_endereco_attributes_st_bairro_id").val(ui.item.id);
+      }
+     }
+    });
+   });
+ 
+    function changeState(state){
+        $.ajax({
+          url: '<%= listarCidade_path %>',
+          data : {id : state.value},
+          success: function(data){
+            $('#st_empresa_st_endereco_attributes_st_cidade_id').empty();
+            $('#st_empresa_st_endereco_attributes_st_cidade_id').html('<option>Carregando...</option>');
+            $('#st_empresa_st_endereco_attributes_st_cidade_id').attr('disabled', 'disabled');
+            var options = "";
+            for (var i in data) {
+              var item = data[i];
+              options += "<option value='"+item.id+"'>"+item.name+"</option>"
+            };
+   
+            $('#st_empresa_st_endereco_attributes_st_cidade_id').html(options);
+            $('#st_empresa_st_endereco_attributes_st_cidade_id').removeAttr('disabled');          
+          }
+        })
+      }
+
+</script>

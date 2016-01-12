@@ -1,74 +1,183 @@
 
+<div id="page-wrapper">
+			<!-- Header -->
+				<header id="header" class="alt">
+					    <link rel="stylesheet" href="/assets/template/main.css" />
+					<h1><a href="index.html">Kiperto</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#" class="icon fa-angle-down">Layouts</a>
+								<ul>
+									<li><a href="generic.html">Generic</a></li>
+									<li><a href="contact.html">Contact</a></li>
+									<li><a href="elements.html">Elements</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option One</a></li>
+											<li><a href="#">Option Two</a></li>
+											<li><a href="#">Option Three</a></li>
+											<li><a href="#">Option Four</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="#" class="button">Sign In</a></li>
+						</ul>
+					</nav>
+				</header>
 
-<div class="panel panel-default"  style="margin-top:200px">
-  	  <div class="panel-body">
-  	  <div class="row">
-	  	  <div class="col-lg-3">
-	  	  </div>
-	  	  <div class="col-lg-5">
-	            <input type="text" id="cidade" name="cidade" disabled value="<%=@st_cidade.nome_cidade%>" class="form-control" aria-label="...">
-	       </div>
-	  	  <div class="col-lg-1">
-	               <input type="text" id="estado" name="estado" disabled value="<%=@st_cidade.st_estado.sigl_estado%>" class="form-control" aria-label="...">
-	       </div>
+			<!-- Banner -->
+				<section id="banner">
+					<h2>Kiperto</h2>
+					<p>Encontre tudo perto de você.</p>
+					<ul class="actions">
+						<li><a href="#" class="button special"><%=@st_cidade.nome_cidade%></a></li>
+						<li><a href="#" class="button special"><%=@st_cidade.st_estado.sigl_estado%></a></li>
+						<!--<li><a href="#" class="button special">Sign Up</a></li>-->
+					</ul>
+						<% @bairros = StBairro.all%>
+					<ul class="actions">
+						 <%@cont = 0%>
+                          <% @bairros.each do |bairro| %>
+		                  <li><strong><a style="color:#ffffff" href="javascript:SelecionarBairro(<%=bairro.id%>);"><%=bairro.nome_bairro%></a></strong></li>
+                           <%if @cont == 6%> 
+		                    <br>
+		                    <%@cont = 0%>
+		                   <%end%>
+	                    <%@cont = @cont +1%>
+	                    <%end%>
+					</ul>
 
-	   </div>
-	   <br>
-	   <div class="row">
-	  	  <div class="col-lg-3">
-	  	  </div>
-	  	  <div class="col-lg-6">
-	         <input type="text" id="nome_bairro" class="form-control" placeholder="Busque pelo setor" aria-label="...">
-	       </div>
-	   </div>
-    <br>
-		<div class="row">
-	     <div class="col-lg-3">
-	  	  </div>
-		  	 <div class="col-lg-6">
-	           <div class="btn-group btn-group-justified" role="group" aria-label="...">
-				  <div class="btn-group" role="group">
-				    <button type="button" onclick="Pesquisar()" id="Pesquisa" class="btn btn-primary">Pesquisar</button>
-				  </div>
-				</div>
-	         </div>
-	    </div>
-     </div>
-</div>   
+				</section>
+
+			<!-- Main -->
+				<section id="main" class="container">
+
+					<section class="box special">
+						<header class="major">
+							<h2>No Kiperto você encontra
+							<br />
+							tudo perto de você</h2>
+							<p>Anuncie no kiperto e tenha seu negócio sendo visto por milhares de pessoas.</p>
+						</header>
+						<span class="image featured"><%= image_tag ("pic01.jpg")%></span>
+					</section>
+
+					<section class="box special features">
+						<div class="features-row">
+							<section>
+								<span class="icon major fa-bolt accent2"></span>
+								<h3>Magna etiam</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section>
+							<section>
+								<span class="icon major fa-area-chart accent3"></span>
+								<h3>Ipsum dolor</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section>
+						</div>
+						<div class="features-row">
+							<section>
+								<span class="icon major fa-cloud accent4"></span>
+								<h3>Sed feugiat</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section>
+							<section>
+								<span class="icon major fa-lock accent5"></span>
+								<h3>Enim phasellus</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+							</section>
+						</div>
+					</section>
+
+					<div class="row">
+						<div class="6u 12u(narrower)">
+
+							<section class="box special">
+								<span class="image featured"><%= image_tag ("pic02.jpg")%></span>
+								<h3>Sed lorem adipiscing</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+								<ul class="actions">
+									<li><a href="#" class="button alt">Learn More</a></li>
+								</ul>
+							</section>
+
+						</div>
+						<div class="6u 12u(narrower)">
+
+							<section class="box special">
+								<span class="image featured"><%= image_tag ("pic03.jpg")%></span>
+								<h3>Accumsan integer</h3>
+								<p>Integer volutpat ante et accumsan commophasellus sed aliquam feugiat lorem aliquet ut enim rutrum phasellus iaculis accumsan dolore magna aliquam veroeros.</p>
+								<ul class="actions">
+									<li><a href="#" class="button alt">Learn More</a></li>
+								</ul>
+							</section>
+
+						</div>
+					</div>
+
+				</section>
+
+			<!-- CTA -->
+				<section id="cta">
+
+					<h2>Sign up for beta access</h2>
+					<p>Blandit varius ut praesent nascetur eu penatibus nisi risus faucibus nunc.</p>
+
+					<form>
+						<div class="row uniform 50%">
+							<div class="8u 12u(mobilep)">
+								<input type="email" name="email" id="email" placeholder="Email Address" />
+							</div>
+							<div class="4u 12u(mobilep)">
+								<input type="submit" value="Sign Up" class="fit" />
+							</div>
+						</div>
+					</form>
+
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon fa-google-plus"><span class="label">Google+</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</footer>
 
 
-  <%= form_tag(pesquisa_path, :method=>'GET') do %>
-     <input type="hidden" id="bairro" name="bairro" >
-     <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+				  <%= form_tag(pesquisa_path, :method=>'GET') do %>
+			        <input type="hidden" id="bairro" name="bairro" >
+			        <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+                 <%end%>
 
-  <%end%>
+		</div>
 
+		<!-- Scripts -->
+			<script src="/assets/template/jquery.min.js"></script>
+			<script src="/assets/template/jquery.dropotron.min.js"></script>
+			<script src="/assets/template/jquery.scrollgress.min.js"></script>
+			<script src="/assets/template/skel.min.js"></script>
+			<script src="/assets/template/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="/assets/template/main.js"></script>
 
+<script type="text/javascript">
 
-<script type="text/javascript">	
+function SelecionarBairro(id){
+	$("#bairro").val(id);
+	$("#BotaoPesquisa").click();
 
-	$(document).ready(function() {
-	     $('#nome_bairro').autocomplete({
-	     source: '/busca',
-	     dataType: 'json',
-	     minLength: 1,
-	     change: function(event, ui) {
-	     if (!ui.item) {
-	     $('#nome_bairro').val('');
-	   }
-	 },
-
-	select: function(event, ui) {
-	if (ui.item) {
-	  $("#bairro").val(ui.item.id);
-	  }
-	 }
-	});
- });
-
-
-function Pesquisar(){
-     $("#BotaoPesquisa").click();
-   }
-
+}
 </script>

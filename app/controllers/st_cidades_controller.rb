@@ -21,6 +21,17 @@ class StCidadesController < ApplicationController
   def edit
   end
 
+  
+  def get_cities
+    #st_cidades = StCidade.find :all, :conditions => {:st_estado_id => params[:id]}, :order => "nome_cidade ASC"
+    
+    st_cidades = StCidade.where(st_estado_id: params[:id]).order('nome_cidade ASC')
+
+    st_cidades_json = st_cidades.map {|item| {:id => item.id, :name => item.nome_cidade}}
+
+    render :json => st_cidades_json
+  end 
+
   # POST /st_cidades
   # POST /st_cidades.json
   def create

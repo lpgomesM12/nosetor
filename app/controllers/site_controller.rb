@@ -2,17 +2,22 @@ class SiteController < ApplicationController
   
   def index
   
-   if params[:categoria] != "" 
+   if params[:categoria] && params[:categoria] != "" 
         @st_empresas = StEmpresa.where(st_category_id: params[:categoria])
-     else
+  elsif params[:q] && params[:q] != ""
+      @st_empresas = StEmpresa.search(params[:q])
+      @q = params[:q]
+  elsif params[:bairro]
+     @st_empresas  = StEmpresa.joins(:st_endereco).where(st_enderecos: {st_bairro_id: params[:bairro]})
+     @bairro = params[:bairro]
+    else
  	    @st_empresas = StEmpresa.all
    end
   
   end
 
-  def home
-   
+  def home  
    @st_cidade = StCidade.find(977)
-   render layout: "home"
+   render layout: "index"
   end
 end

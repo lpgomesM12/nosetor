@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229153123) do
+ActiveRecord::Schema.define(version: 20160106154508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 20151229153123) do
     t.datetime "logo_updated_at"
   end
 
+  add_index "st_empresas", ["desc_palavrachave"], name: "index_st_empresas_on_desc_palavrachave", using: :btree
   add_index "st_empresas", ["st_category_id"], name: "index_st_empresas_on_st_category_id", using: :btree
   add_index "st_empresas", ["st_endereco_id"], name: "index_st_empresas_on_st_endereco_id", using: :btree
 

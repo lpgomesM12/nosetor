@@ -9,15 +9,13 @@
           </a>
           <div class="media-body">
               <a href="#"><h4 class="media-heading" style ="color:#555555"><strong><%=empresa.nome_empresa%><!--<small><i>Posted on January 10, 2014</i></small>--></strong></h4> </a>
-              <small style ="font-size:12px;color:#555555"><%=empresa.st_endereco.nome_rua%> Quadra <%=empresa.st_endereco.desc_quadra%> Lote <%=empresa.st_endereco.desc_lote%> - <%=empresa.st_endereco.st_bairro.nome_bairro%>, <%=empresa.st_endereco.st_cidade.nome_cidade %> - <%=empresa.st_endereco.st_cidade.st_estado.nome_estado%></small><br>
+              <small style ="font-size:12px;color:#555555"><%=empresa.st_endereco.nome_rua rescue nil%> Quadra <%=empresa.st_endereco.desc_quadra  rescue nil%> Lote <%=empresa.st_endereco.desc_lote  rescue nil%> - <%=empresa.st_endereco.st_bairro.nome_bairro  rescue nil%>, <%=empresa.st_endereco.st_cidade.nome_cidade  rescue nil%> - <%=empresa.st_endereco.st_cidade.st_estado.nome_estado  rescue nil%></small><br>
           </div>
       </div>
     </div>
 </div>
 <%end%>
 </div>
-
-
 
   <%= form_tag(pesquisa_path, :method=>'GET') do %>
 
