@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require_tree ./all
 //= require jquery-ui
-//= require googleAnalytcs
 
