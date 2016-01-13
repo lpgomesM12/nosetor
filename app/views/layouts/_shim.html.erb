@@ -13,7 +13,7 @@
 		     <a href="javascript:Pesquisar(<%=categoria.id%>);"><b><%=categoria.nome_categoria%></b></a><br>
 	       <%end%>
             <br>
-		     <button type="button"  class="btn btn-default" style="background:#fff79d"  onclick="$('#myModal').modal('show');" data-dismiss="modal">
+		     <button type="button"  class="btn btn-default" style="background:#fff79d"  onclick="$('#myModal1').modal('show');" data-dismiss="modal">
              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Mais Categorias
 		     </button>
 		  </div>
@@ -21,3 +21,14 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+
+
+function modal(){
+
+	$('#myModal').modal('toggle')
+}
+
+</script>

@@ -13,7 +13,8 @@
             <form class="navbar-form navbar-left" role="search">
            <div class="input-group">
             <input type="hidden" id="bairro" name="bairro" value="<%=@bairro%>">
-           <input type="text" id="q" name="q" class="form-control" size="60" value="<%=@q%>" placeholder="Pesquise por estabelecimentos, produtos, serviços ...">
+           <input type=
+           "text" id="q" name="q" class="form-control" size="60" value="<%=@q%>" placeholder="Pesquise por estabelecimentos, produtos, serviços ...">
            <span class="input-group-btn">
            <button class="btn btn-default" id="btnQ" name="btnQ" onclick="PesquisarQ($('#q').val())" type="button">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
@@ -34,7 +35,6 @@
    </div>
 </nav>
 
-
 <style type="text/css">
 
 .navbar-default .navbar-nav > li > a {
@@ -50,22 +50,14 @@
     color: #ffffff;
 }
 
-
 </style>
 
-<script type="text/javascript">
 
 
-$(document).ready(function(){
-
-  $('#q').keypress(function(e) {
-    if (e.which == 13) {
-   
-    $('#btnQ').click();
-    }
-  });
-
-});
-
+<script>
+  function PesquisarQ(q){
+     $("#q").val(q);
+     $("#BotaoPesquisa").click();
+   }
 
 </script>

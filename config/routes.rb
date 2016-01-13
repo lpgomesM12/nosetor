@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   resources :st_estados
   get 'site/index'
 
+  
   get '/pesquisa', to: 'site#index', as: 'pesquisa'
   get 'busca' => 'st_bairros#search'
   match '/listarCidade', to: 'st_cidades#get_cities', via: 'get'
-
+  match '/contact', to: 'site#contact', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
