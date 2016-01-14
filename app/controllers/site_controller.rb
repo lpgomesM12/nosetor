@@ -22,8 +22,18 @@ class SiteController < ApplicationController
     render layout: "index"
   end
 
+  
+  def show_empresa
+    
+    @st_empresa = StEmpresa.find(params[:id])
+
+     render layout: "show_empresa"
+  
+  end
+
   def contact  
   end
+  
   def generic  
   end
 end

@@ -8,7 +8,7 @@
              <%= image_tag (empresa.logo.url(:thumb))%>
           </a>
           <div class="media-body">
-              <a href="#"><h4 class="media-heading" style ="color:#555555"><strong><%=empresa.nome_empresa%><!--<small><i>Posted on January 10, 2014</i></small>--></strong></h4> </a>
+              <a href="<%=loja_path(empresa.id)%>"><h4 class="media-heading" style ="color:#555555"><strong><%=empresa.nome_empresa%><!--<small><i>Posted on January 10, 2014</i></small>--></strong></h4> </a>
               <small style ="font-size:12px;color:#555555"><%=empresa.st_endereco.nome_rua rescue nil%> Quadra <%=empresa.st_endereco.desc_quadra  rescue nil%> Lote <%=empresa.st_endereco.desc_lote  rescue nil%> - <%=empresa.st_endereco.st_bairro.nome_bairro  rescue nil%>, <%=empresa.st_endereco.st_cidade.nome_cidade  rescue nil%> - <%=empresa.st_endereco.st_cidade.st_estado.nome_estado  rescue nil%></small><br>
           </div>
       </div>
@@ -24,7 +24,6 @@
       <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
 
   <%end%>
-
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

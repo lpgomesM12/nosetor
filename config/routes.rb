@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   match '/listarCidade', to: 'st_cidades#get_cities', via: 'get'
   match '/contact', to: 'site#contact', via: 'get'
 
+  get '/:id', to: 'site#show_empresa', as: 'loja'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
