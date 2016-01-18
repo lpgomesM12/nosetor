@@ -1,79 +1,111 @@
 <div class="panel panel-default" style="margin-top:60px">
+<div class="panel-heading" align="center"></div>	
   <div class="panel-body">
-
-   <h3><%=@st_empresa.nome_empresa%></h3>
+     <a href="#" class="pull-left" >
+             <%= image_tag (@st_empresa.logo.url(:thumb))%>
+     </a>
+      <h2 align="center"><%=@st_empresa.nome_empresa%></h2>
+     <br>
+     <hr>
+   
 
     <small><%=@st_empresa.st_endereco.nome_rua rescue nil%> Quadra <%=@st_empresa.st_endereco.desc_quadra  rescue nil%> Lote <%=@st_empresa.st_endereco.desc_lote  rescue nil%> - <%=st_empresa.st_endereco.st_bairro.nome_bairro  rescue nil%>, <%=@st_empresa.st_endereco.st_cidade.nome_cidade  rescue nil%> - <%=@st_empresa.st_endereco.st_cidade.st_estado.nome_estado  rescue nil%></small><br>
 
-     <small><%=@st_empresa.tele_telefone1%></small>
+     <small><%=@st_empresa.tele_telefone1%> |</small>
+     <small><%=@st_empresa.tele_telefone1%></small>	
   </div>
 </div>
 
-
 <div class="panel panel-default">
-  <div class="panel-heading">Cardápio</div>
-  <div class="panel-body">
-   
-	 <div class="list-group">
-	  <a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Calabreza</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-	   </p>
-	  </a>
-	  	  <a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Portugueza</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-        <small>
-        	R$:50.00
-	    </small>
-	    </p>
-	    </a>
-	  	<a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Frango Catupiri</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-	    </p>
-	    </a>
-	  	  <a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Calabreza</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-	    </p>
-	    </a>
-	    <a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Calabreza</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-	    </p>
-	    </a>
-	  	<a  id="panelCentral" class="list-group-item">
-	    <h4 class="list-group-item-heading">Calabreza</h4>
-	    <p class="list-group-item-text">
-	    <small><em>
-         Cebola,milho,batata 
-	    </em></small>
-	   </p>
-	  </a>
+  <div class="panel-heading" style="background:#f4e7c1" align="center">Pizzas</div>
 
-	</div>
+	 <div class="list-group">
+	  	<a  id="panelCentral" class="list-group-item">
+	      <h4 class="list-group-item-heading">Portugueza 	    
+	    	 <small class="pull-right">
+        	      <strong style="color:#6ae488">R$:50.00</strong>
+	          </small>
+	       </h4>
+		    <p class="list-group-item-text">
+		    <small>
+		        <em>
+	               Cebola,milho,batata 
+		        </em>
+		    </small>
+		    </p>
+	    </a>
+
+	    <a  id="panelCentral" class="list-group-item">
+	      <h4 class="list-group-item-heading">Portugueza 	    
+	    	 <small class="pull-right">
+        	      <strong style="color:#6ae488">R$:50.00</strong>
+	          </small>
+	       </h4>
+		    <p class="list-group-item-text">
+		    <small>
+		        <em>
+	               Cebola,milho,batata 
+		        </em>
+		    </small>
+		    </p>
+	    </a>
+
+       	 <a  id="panelCentral" class="list-group-item">
+	      <h4 class="list-group-item-heading">Portugueza 	    
+	    	 <small class="pull-right">
+        	      <strong style="color:#6ae488">R$:50.00</strong>
+	          </small>
+	       </h4>
+		    <p class="list-group-item-text">
+		    <small>
+		        <em>
+	               Cebola,milho,batata 
+		        </em>
+		    </small>
+		    </p>
+	    </a>
 
   </div>
+   <div class="panel-heading" align="center" style="background:#f4e7c1" >Sanduiches</div>
+   <div class="list-group">
+       
+       	 <a  id="panelCentral" class="list-group-item">
+	      <h4 class="list-group-item-heading">Portugueza 	    
+	    	 <small class="pull-right">
+        	      <strong style="color:#6ae488">R$:50.00</strong>
+	          </small>
+	       </h4>
+		    <p class="list-group-item-text">
+		    <small>
+		        <em>
+	               Cebola,milho,batata 
+		        </em>
+		    </small>
+		    </p>
+	    </a>
+
+	    <a  id="panelCentral" class="list-group-item">
+	      <h4 class="list-group-item-heading">Portugueza 	    
+	    	 <small class="pull-right">
+        	      <strong style="color:#6ae488">R$:50.00</strong>
+	          </small>
+	       </h4>
+		    <p class="list-group-item-text">
+		    <small>
+		        <em>
+	               Cebola,milho,batata 
+		        </em>
+		    </small>
+		    </p>
+	    </a>
+   </div>
 </div>
 
 
 <style type="text/css">
 
+/*#panelCentral:hover{
+ background-color:#f8ded7;
+}*/
 
 </style>

@@ -3,6 +3,7 @@
 			<!-- Header -->
 				<header id="header" class="alt">
 					    <link rel="stylesheet" href="/assets/template/main.css" />
+					      <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"> 
 					<h1><a href="index.html">Kiperto</a></h1>
 					<nav id="nav">
 						<ul>
@@ -33,23 +34,29 @@
 					<h2>Kiperto</h2>
 					<p>Encontre tudo perto de você.</p>
 					<ul class="actions">
-						<li><a href="#" class="button special"><%=@st_cidade.nome_cidade%></a></li>
-						<li><a href="#" class="button special"><%=@st_cidade.st_estado.sigl_estado%></a></li>
+						<li><a href="#" class="button"><%=@st_cidade.nome_cidade%></a></li>
+						<li><a href="#" class="button"><%=@st_cidade.st_estado.sigl_estado%></a></li>
 						<!--<li><a href="#" class="button special">Sign Up</a></li>-->
 					</ul>
-						<% @bairros = StBairro.all%>
-					<ul class="actions">
-						 <%@cont = 0%>
-                          <% @bairros.each do |bairro| %>
-		                  <li><strong><a style="color:#ffffff" href="javascript:SelecionarBairro(<%=bairro.id%>);"><%=bairro.nome_bairro%></a></strong></li>
-                           <%if @cont == 6%> 
-		                    <br>
-		                    <%@cont = 0%>
-		                   <%end%>
-	                    <%@cont = @cont +1%>
-	                    <%end%>
-					</ul>
 
+            	 <%= form_tag(pesquisa_path, :method=>'GET') do %>
+			             <input type="hidden" id="bairro" name="bairro" >
+			           <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
+
+			           <div class="row uniform 50%">
+							<div class="3u 12u(mobilep)">
+							</div>
+							<div class="4u 12u(mobilep)">
+								<input type="text" name="nome_bairro" id="nome_bairro" placeholder="Pesquise pelo bairro" />
+							</div>
+							<div class="1u 12u(mobilep)">
+								<input type="button" class="button special" onclick="Pesquisar()" id="Pesquisa" value="Pesquisar" class="fit" />
+							</div>
+						</div>
+                 <%end%>
+
+             
+					
 				</section>
 
 			<!-- Main -->
@@ -57,9 +64,9 @@
 
 					<section class="box special">
 						<header class="major">
-							<h2>No Kiperto você encontra
+							<h2>Kiperto você encontra
 							<br />
-							tudo perto de você</h2>
+							tudo que procura</h2>
 							<p>Anuncie no kiperto e tenha seu negócio sendo visto por milhares de pessoas.</p>
 						</header>
 						<span class="image featured"><%= image_tag ("pic01.jpg")%></span>
@@ -156,11 +163,6 @@
 				</footer>
 
 
-				  <%= form_tag(pesquisa_path, :method=>'GET') do %>
-			        <input type="hidden" id="bairro" name="bairro" >
-			        <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
-                 <%end%>
-
 		</div>
 
 		<!-- Scripts -->
@@ -170,7 +172,8 @@
 			<script src="/assets/template/jquery.scrollgress.min.js"></script>
 			<script src="/assets/template/skel.min.js"></script>
 			<script src="/assets/template/util.js"></script>
-			<script src="/assets/all/googleAnalytcs.js"></script>
+		 <!--<script src="/assets/all/googleAnalytcs.js"></script>-->
+			<script src="/assets/jquery-ui.js"></script>
 			
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="/assets/template/main.js"></script>
@@ -183,6 +186,27 @@ function SelecionarBairro(id){
 
 }
 
+	$(document).ready(function() {
+	     $('#nome_bairro').autocomplete({
+	     source: '/busca',
+	     dataType: 'json',
+	     minLength: 0,
+	     change: function(event, ui) {
+	     if (!ui.item) {
+     $('#nome_bairro').val('');
+	   }
+	 },
 
+	select: function(event, ui) {
+	if (ui.item) {
+	  $("#bairro").val(ui.item.id);
+	  }
+	 }
+	});
+ });
+
+function Pesquisar(){
+    $("#BotaoPesquisa").click();
+   }
 
 </script>
