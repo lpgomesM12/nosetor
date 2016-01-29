@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Produtos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome produto</th>
+      <th>Valr produto</th>
+      <th>St categoriaproduto</th>
+      <th>St empresa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_produtos.each do |st_produto| %>
+      <tr>
+        <td><%= st_produto.nome_produto %></td>
+        <td><%= st_produto.valr_produto %></td>
+        <td><%= st_produto.st_categoriaproduto %></td>
+        <td><%= st_produto.st_empresa %></td>
+        <td><%= link_to 'Show', st_produto %></td>
+        <td><%= link_to 'Edit', edit_st_produto_path(st_produto) %></td>
+        <td><%= link_to 'Destroy', st_produto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St produto', new_st_produto_path %>

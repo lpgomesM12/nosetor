@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome produto</th>
+      <th>St categoriaproduto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_items.each do |st_item| %>
+      <tr>
+        <td><%= st_item.nome_produto %></td>
+        <td><%= st_item.st_categoriaproduto %></td>
+        <td><%= link_to 'Show', st_item %></td>
+        <td><%= link_to 'Edit', edit_st_item_path(st_item) %></td>
+        <td><%= link_to 'Destroy', st_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St item', new_st_item_path %>

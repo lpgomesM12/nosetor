@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nome_produto: MyString
+  valr_produto: 9.99
+  st_categoriaproduto_id: 
+  st_empresa_id: 
+
+two:
+  nome_produto: MyString
+  valr_produto: 9.99
+  st_categoriaproduto_id: 
+  st_empresa_id: 

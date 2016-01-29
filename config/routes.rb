@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :st_itemprodutos
+  resources :st_items
+  resources :st_produtos
+  resources :st_categoriaprodutos
   resources :st_empresas
   resources :st_categories
   devise_for :users

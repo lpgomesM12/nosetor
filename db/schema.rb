@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160106154508) do
+ActiveRecord::Schema.define(version: 20160118160225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20160106154508) do
 
   add_index "st_bairros", ["nome_bairro"], name: "index_st_bairros_on_nome_bairro", using: :btree
   add_index "st_bairros", ["st_cidade_id"], name: "index_st_bairros_on_st_cidade_id", using: :btree
+
+  create_table "st_categoriaprodutos", force: :cascade do |t|
+    t.string   "nome_categoria"
+    t.integer  "st_category_id"
+    t.integer  "user_inclusao"
+    t.integer  "integer"
+    t.integer  "user_exclusao"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "st_categoriaprodutos", ["integer"], name: "index_st_categoriaprodutos_on_integer", using: :btree
+  add_index "st_categoriaprodutos", ["st_category_id"], name: "index_st_categoriaprodutos_on_st_category_id", using: :btree
+  add_index "st_categoriaprodutos", ["user_exclusao"], name: "index_st_categoriaprodutos_on_user_exclusao", using: :btree
+  add_index "st_categoriaprodutos", ["user_inclusao"], name: "index_st_categoriaprodutos_on_user_inclusao", using: :btree
 
   create_table "st_categories", force: :cascade do |t|
     t.string   "nome_categoria"
@@ -106,6 +121,45 @@ ActiveRecord::Schema.define(version: 20160106154508) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "st_itemprodutos", force: :cascade do |t|
+    t.integer  "st_item_id"
+    t.integer  "st_produto_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "st_itemprodutos", ["st_item_id"], name: "index_st_itemprodutos_on_st_item_id", using: :btree
+  add_index "st_itemprodutos", ["st_produto_id"], name: "index_st_itemprodutos_on_st_produto_id", using: :btree
+
+  create_table "st_items", force: :cascade do |t|
+    t.string   "nome_produto"
+    t.integer  "st_categoriaproduto_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "st_items", ["st_categoriaproduto_id"], name: "index_st_items_on_st_categoriaproduto_id", using: :btree
+
+  create_table "st_produtos", force: :cascade do |t|
+    t.string   "nome_produto"
+    t.decimal  "valr_produto"
+    t.integer  "st_categoriaproduto_id"
+    t.integer  "st_empresa_id"
+    t.integer  "user_inclusao"
+    t.integer  "integer"
+    t.integer  "user_alteracao"
+    t.integer  "user_exclusao"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "st_produtos", ["integer"], name: "index_st_produtos_on_integer", using: :btree
+  add_index "st_produtos", ["st_categoriaproduto_id"], name: "index_st_produtos_on_st_categoriaproduto_id", using: :btree
+  add_index "st_produtos", ["st_empresa_id"], name: "index_st_produtos_on_st_empresa_id", using: :btree
+  add_index "st_produtos", ["user_alteracao"], name: "index_st_produtos_on_user_alteracao", using: :btree
+  add_index "st_produtos", ["user_exclusao"], name: "index_st_produtos_on_user_exclusao", using: :btree
+  add_index "st_produtos", ["user_inclusao"], name: "index_st_produtos_on_user_inclusao", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "nome"
     t.string   "email",                  default: "", null: false
@@ -126,9 +180,15 @@ ActiveRecord::Schema.define(version: 20160106154508) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "st_bairros", "st_cidades"
+  add_foreign_key "st_categoriaprodutos", "st_categories"
   add_foreign_key "st_cidades", "st_estados"
   add_foreign_key "st_empresas", "st_categories"
   add_foreign_key "st_empresas", "st_enderecos"
   add_foreign_key "st_enderecos", "st_bairros"
   add_foreign_key "st_enderecos", "st_cidades"
+  add_foreign_key "st_itemprodutos", "st_items"
+  add_foreign_key "st_itemprodutos", "st_produtos"
+  add_foreign_key "st_items", "st_categoriaprodutos"
+  add_foreign_key "st_produtos", "st_categoriaprodutos"
+  add_foreign_key "st_produtos", "st_empresas"
 end

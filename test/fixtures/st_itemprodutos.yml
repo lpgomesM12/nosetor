@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  st_item_id: 
+  st_produto_id: 
+
+two:
+  st_item_id: 
+  st_produto_id: 

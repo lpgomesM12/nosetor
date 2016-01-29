@@ -1,0 +1,67 @@
+<%= form_for(@st_produto) do |f| %>
+  <% if @st_produto.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@st_produto.errors.count, "error") %> prohibited this st_produto from being saved:</h2>
+
+      <ul>
+      <% @st_produto.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+   <div class="row">
+    <div class="col-lg-6">
+       <%= f.label :Empresa %><br>
+       <%= f.select :st_empresa_id, options_from_collection_for_select(StEmpresa.all, 'id',  'nome_empresa', @st_produto.st_empresa_id),{:include_blank => true}, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+ <div class="row">
+    <div class="col-lg-6">
+       <%= f.label :Categoria_Produto %><br>
+       <%= f.select :st_categoriaproduto_id, options_from_collection_for_select(StCategoriaproduto.all, 'id',  'nome_categoria', @st_produto.st_categoriaproduto_id),{:include_blank => true}, {:class => 'form-control'} %>
+    </div>
+  </div>
+ <div class="row">
+  <div class="col-lg-6">
+    <%= f.label :nome_produto %><br>
+    <%= f.text_field :nome_produto, :class => 'form-control' %>
+   </div>
+  </div>
+  <br> 
+  <div class="row">
+    <div class="col-lg-2">
+      <%= f.label :valor_produto %><br>
+      <%= f.text_field :valr_produto, :class => 'form-control', :value => number_to_currency(@st_produto.valr_produto, unit: "R$", separator: ",", delimiter: "")%>
+    </div>
+
+
+  </div>
+  <br/>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="submit" class="btn btn-primary btn-sm">
+      <span class="glyphicon glyphicon-floppy-disk"></span> Salvar
+    </button>
+
+    <%= link_to st_produtos_path, :class => "btn btn-default btn-sm" do %>
+      <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+    <% end %>
+
+  </div>
+
+<% end %>
+
+
+
+
+<script type="text/javascript">
+
+  $(function() {
+     $("#st_produto_valr_produto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+  })
+
+
+</script>

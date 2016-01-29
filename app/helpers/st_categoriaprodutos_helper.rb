@@ -1,0 +1,2 @@
+module StCategoriaprodutosHelper
+end

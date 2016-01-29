@@ -16,91 +16,11 @@
   </div>
 </div>
 
-<div class="panel panel-default">
-  <div class="panel-heading" style="background:#f4e7c1" align="center">Pizzas</div>
 
-	 <div class="list-group">
-	  	<a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
 
-	    <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-       	 <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-  </div>
-   <div class="panel-heading" align="center" style="background:#f4e7c1" >Sanduiches</div>
-   <div class="list-group">
-       
-       	 <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-	    <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-   </div>
-</div>
-
+<%if @st_empresa.st_category.id == 1%>
+   <%= render 'cardapio' %>
+<%end%>
 
 <style type="text/css">
 
