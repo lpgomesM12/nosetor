@@ -73,6 +73,6 @@ class StEmpresasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def st_empresa_params
-      params.require(:st_empresa).permit(:nome_empresa, :desc_anuncioempresa, :tele_telefone1, :tele_telefone2, :desc_palavrachave, :desc_cnpj, :st_endereco_id, :st_category_id, :logo, st_endereco_attributes: [ :id, :nome_rua, :desc_quadra, :desc_lote, :desc_numero, :desc_complemento, :desc_cep, :latitude, :longitude, :st_bairro_id, :st_cidade_id])
+      params.require(:st_empresa).permit(:nome_empresa, :desc_anuncioempresa, :tele_telefone1, :tele_telefone2, :desc_palavrachave, :desc_cnpj, :st_endereco_id, :st_category_id, :logo, :page_name, st_endereco_attributes: [ :id, :nome_rua, :desc_quadra, :desc_lote, :desc_numero, :desc_complemento, :desc_cep, :latitude, :longitude, :st_bairro_id, :st_cidade_id])
     end
 end
