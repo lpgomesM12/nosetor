@@ -3,13 +3,7 @@ class StBairrosController < ApplicationController
 
   
   def search
-     #bairro = StBairro.all
-     #bairro_json = bairro.map{|item|{:nome_bairro => item.nome_bairro}}
-     #render :json => bairro_json
-     #@bairro = StBairro.all
-     #render json: @bairro.map
-     @results = StBairro.search(params[:term])
-
+     @results = StBairro.search(params[:term]).order(:nome_bairro)
   end
 
   # GET /st_bairros
