@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   
   get '/pesquisa', to: 'site#index', as: 'pesquisa'
   get 'busca' => 'st_bairros#search'
+   get 'buscaCategoria' => 'st_categories#pesquisa_categoria'
   match '/listarCidade', to: 'st_cidades#get_cities', via: 'get'
   match '/contact', to: 'site#contact', via: 'get'
 

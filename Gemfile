@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 
-
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
 gem 'sass-rails', '~> 5.0'
@@ -27,9 +26,10 @@ end
 
 group :production do
 	#gem 'unicorn'
-    gem 'rails_12factor'
+  gem 'rails_12factor'
 	gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
 	gem 'rails_serve_static_assets'
+
 end
 
 
@@ -39,5 +39,11 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  #Para servidor VPS
+  gem 'capistrano', '~> 3.4'
+  gem 'capistrano-rails', '~> 1.1', '>= 1.1.6'
+  gem 'capistrano-rbenv', '~> 2.0', '>= 2.0.4'
+
 end
 

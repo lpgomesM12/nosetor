@@ -1,6 +1,11 @@
 class StCategoriesController < ApplicationController
   before_action :set_st_category, only: [:show, :edit, :update, :destroy]
 
+
+  def pesquisa_categoria
+     @results = StCategory.search(params[:term]).order(:nome_categoria).limit(15)
+  end
+
   # GET /st_categories
   # GET /st_categories.json
   def index

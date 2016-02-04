@@ -55,11 +55,15 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Setores</h4>
+        <h4 class="modal-title">Categorias</h4>
       </div>
       <div class="modal-body">
 
-        Pesquisa por categorias.....
+    <div class="row">
+      <div class="col-lg-12">
+          <input type="text" id="nome_categoria" class="form-control" onfocus="javascript:$(this).autocomplete('search','');" placeholder="Busque pela categoria" aria-label="...">            
+      </div>
+    </div>
       
       </div>
       <div class="modal-footer">
@@ -96,4 +100,31 @@
      $("#BotaoPesquisa").click();
    }
 
+
+   $(document).ready(function() {
+       $('#nome_categoria').autocomplete({
+       source: '/buscaCategoria',
+       dataType: 'json',
+       minLength: 0,
+       change: function(event, ui) {
+       if (!ui.item) {
+           $('#nome_categoria').val('');
+     }
+   },
+
+select: function(event, ui) {
+  if (ui.item) {
+    $("#categoria").val(ui.item.id);
+    $("#BotaoPesquisa").click();
+    }
+   }
+  });
+ });
+
 </script>
+
+<style type="text/css">
+  .ui-autocomplete {
+      z-index: 5000;
+  }
+</style>
