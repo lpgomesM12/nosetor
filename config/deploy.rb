@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'nosetor'
-set :repo_url, 'github.com/lpgomesM12/nosetor.git'
+set :repo_url, 'git@github.com:lpgomesM12/nosetor.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
