@@ -100,7 +100,7 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'kipertoapp', 
-      :access_key_id => 'AKIAIVTKKZGEK7T7G5ZA',,
+      :access_key_id => 'AKIAIVTKKZGEK7T7G5ZA',
       :secret_access_key => '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'
     }
   }
