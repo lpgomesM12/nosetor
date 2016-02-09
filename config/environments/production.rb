@@ -99,9 +99,9 @@ Rails.application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => ENV['kipertoapp'],
-      :access_key_id => ENV['AKIAIVTKKZGEK7T7G5ZA'],
-      :secret_access_key => ENV['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']
+      :bucket => ENV['S3_BUCKET_NAME'], 
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
     }
   }
 
