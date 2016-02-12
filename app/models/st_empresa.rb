@@ -16,7 +16,6 @@ class StEmpresa < ActiveRecord::Base
   #                          :s3_permissions => 'private',
   #                         default_url: "/images/normal/missing.png"
 
-  
    #Desenvolvimento
    has_attached_file :logo, :styles => { :medium => "300x300#", :thumb => "64x64#" }, default_url: "/images/normal/missing.png"
 
