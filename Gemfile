@@ -12,7 +12,6 @@ gem 'aws-sdk', '< 2.0'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
-
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jbuilder', '~> 2.0'
@@ -23,7 +22,6 @@ group :development, :test do
   gem 'byebug'
 end
 
-
 group :production do
 	#gem 'unicorn'
     #gem 'rails_12factor'
@@ -31,7 +29,6 @@ group :production do
 	gem 'rails_serve_static_assets'
 
 end
-
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
