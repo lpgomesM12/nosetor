@@ -6,6 +6,16 @@ class StBairrosController < ApplicationController
      @results = StBairro.search(params[:term]).order(:nome_bairro)
   end
 
+  def busca_lat_long
+     @bairros = StBairro.where(id: params[:id])
+
+     barrios_json = @bairros.map { |item| {:id => item.id, 
+                                           :latitude => item.latitude, 
+                                           :longitude => item.longitude}}
+
+    render :json => barrios_json
+  end
+
   # GET /st_bairros
   # GET /st_bairros.json
   def index

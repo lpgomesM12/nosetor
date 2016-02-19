@@ -17,14 +17,12 @@
 <%end%>
 </div>
 
-  <%= form_tag(pesquisa_path, :method=>'GET') do %>
-
+<%= form_tag(pesquisa_path, :method=>'GET') do %>
       <input type="hidden" id="categoria" name="categoria">
       <input type="hidden" id="q" name="q" >
-      <input type="hidden" id="bairro" name="bairro" >
+      <input type="hidden" id="bairro_id" name="bairro_id" value="<%=@bairro%>">
       <button class="btn btn-primary" style="display: none;" id="BotaoPesquisa" type="submit" ></button>
-
-  <%end%>
+<%end%>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -40,7 +38,7 @@
         
       <div class="row">
         <div class="col-lg-12">
-            <input type="text" id="nome_bairro_id" class="form-control" onfocus="javascript:$(this).autocomplete('search','');" placeholder="Busque pelo bairro" aria-label="...">            
+            <input type="text" id="nome_bairro_id" name="nome_bairro_id" class="form-control" onfocus="javascript:$(this).autocomplete('search','');" placeholder="Busque pelo bairro" aria-label="...">            
         </div>
       </div>
 
@@ -51,7 +49,7 @@
       </div>
     </div>
   </div>
-</div
+</div>
 
 
 <!-- Modal -->
@@ -108,7 +106,6 @@ a:hover {
    }
 
 
-
 $(document).ready(function() {
        $('#nome_categoria').autocomplete({
        source: '/buscaCategoria',
@@ -131,18 +128,18 @@ select: function(event, ui) {
 
 $(document).ready(function() {
        $('#nome_bairro_id').autocomplete({
-       source: '/buscaCategoria',
+       source: '/busca',
        dataType: 'json',
        minLength: 0,
        change: function(event, ui) {
        if (!ui.item) {
-           $('#nome_bairro_id').val('');
+       $('#nome_bairro_id').val('');
      }
    },
 
 select: function(event, ui) {
   if (ui.item) {
-    $("#bairro").val(ui.item.id);
+    $("#bairro_id").val(ui.item.id);
     $("#BotaoPesquisa").click();
     }
    }

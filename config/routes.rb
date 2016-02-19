@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :st_categoriaprodutos
   resources :st_empresas
   resources :st_categories
-  devise_for :users
+  devise_for :user
   resources :st_enderecos
   resources :st_bairros
   resources :st_cidades
@@ -15,9 +15,11 @@ Rails.application.routes.draw do
   
   get '/pesquisa', to: 'site#index', as: 'pesquisa'
   get 'busca' => 'st_bairros#search'
-   get 'buscaCategoria' => 'st_categories#pesquisa_categoria'
+  get 'buscaCategoria' => 'st_categories#pesquisa_categoria'
   match '/listarCidade', to: 'st_cidades#get_cities', via: 'get'
   match '/contact', to: 'site#contact', via: 'get'
+
+  get '/buscaLatLong', to: 'st_bairros#busca_lat_long', as: 'buscaLatLong'
 
   get '/:id', to: 'site#show_empresa', as: 'loja'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -3,6 +3,7 @@ class StEmpresasController < ApplicationController
 
   # GET /st_empresas
   # GET /st_empresas.json
+  before_action :authenticate_user!
 
   layout "admin"
   

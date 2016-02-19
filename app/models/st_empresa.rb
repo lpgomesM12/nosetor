@@ -16,10 +16,8 @@ class StEmpresa < ActiveRecord::Base
   #                          :s3_permissions => 'private',
   #                         default_url: "/images/normal/missing.png"
 
-   #Desenvolvimento
-   has_attached_file :logo, :styles => { :medium => "300x300#", :thumb => "64x64#" }, default_url: "/images/normal/missing.png"
-
-
+  #Desenvolvimento
+  has_attached_file :logo, :styles => { :medium => "300x300#", :thumb => "64x64#" }, default_url: "/images/normal/missing.png"
 
   #validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :logo, :content_type => %w(image/jpeg image/jpg image/png)
@@ -30,7 +28,7 @@ class StEmpresa < ActiveRecord::Base
 
 
   #iguality
-  validate :busca_pagename_existente
+  validate :busca_pagename_existente, :on => [ :create]
 
 
 

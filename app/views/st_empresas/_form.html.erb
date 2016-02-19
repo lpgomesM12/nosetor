@@ -10,8 +10,7 @@
       </ul>
     </div>
   <% end %>
-
-
+  
    <div class="row">
     <div class="col-lg-6">
      <%= f.label :Categoria %><br>
@@ -78,14 +77,6 @@
 <%= f.fields_for :st_endereco do |endereco| %>
 
 
-<div class="row">
-    <div class="col-lg-6">
-      <label>Bairro</label>
-
-          <input type="text" id="nome_bairro" class="form-control" placeholder="Busque pelo bairro" aria-label="...">
-            <%= endereco.hidden_field :st_bairro_id%> 
-    </div>
-</div>
 <div class="row">  
     <div class="col-lg-8">
       <%= endereco.label :nome_rua %><br>
@@ -107,17 +98,7 @@
     <%= endereco.text_field :desc_cep, :class => 'form-control' %>
   </div>
 </div>
-<br>
- <div class="row">
-  <div class="col-lg-4">
-    <%= endereco.label :Latitude %><br>
-    <%= endereco.text_field :latitude, :class => 'form-control' %>
-  </div>
-  <div class="col-lg-4">
-    <%= endereco.label :Longitude %><br>
-    <%= endereco.text_field :longitude, :class => 'form-control' %>
-  </div>
-</div>
+
 <br>
 <div class="row">
   <%=  f.fields_for :st_estado do |estado| %>
@@ -137,21 +118,40 @@
           <%= endereco.label :Cidade %><br>
           <%= endereco.select :st_cidade_id, [], {}, :class => 'form-control'%>
   </div>
-
    <%end%>
+  </div>
+
+ <br>
+ <div class="row">
+    <div class="col-lg-6">
+      <label>Bairro</label>
+
+          <input type="text" id="nome_bairro" class="form-control" onfocus="javascript:$(this).autocomplete('search','');" placeholder="Busque pelo bairro"  aria-label="...">
+            <%= endereco.hidden_field :st_bairro_id%> 
+    </div>
+</div>
+<br>
+ <div class="row">
+  <div class="col-lg-4">
+    <%= endereco.label :Latitude %><br>
+    <%= endereco.text_field :latitude, :class => 'form-control' %>
+  </div>
+  <div class="col-lg-4">
+    <%= endereco.label :Longitude %><br>
+    <%= endereco.text_field :longitude, :class => 'form-control' %>
+  </div>
+</div>
+
 <%end%>
 
-
- </div>
- <br>
-
-
+<br>
 
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
 
+
+<% end %>
 
 <script type="text/javascript">
 
@@ -170,6 +170,7 @@
     select: function(event, ui) {
     if (ui.item) {
       $("#st_empresa_st_endereco_attributes_st_bairro_id").val(ui.item.id);
+       seta_lat_log(ui.item.id);
       }
      }
     });
@@ -191,6 +192,21 @@
    
             $('#st_empresa_st_endereco_attributes_st_cidade_id').html(options);
             $('#st_empresa_st_endereco_attributes_st_cidade_id').removeAttr('disabled');          
+          }
+        })
+      }
+
+    function seta_lat_log(id){
+        $.ajax({
+          url: '<%= buscaLatLong_path %>',
+          data : {id : id},
+          success: function(data){
+           var options = "";
+            for (var i in data) {
+              var item = data[i];
+             $('#st_empresa_st_endereco_attributes_latitude').val(item.latitude);
+              $('#st_empresa_st_endereco_attributes_longitude').val(item.longitude);
+            };       
           }
         })
       }

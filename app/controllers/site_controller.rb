@@ -1,5 +1,6 @@
 class SiteController < ApplicationController
   
+ 
   def index
     if params[:categoria] && params[:categoria] != "" 
         @st_empresas = StEmpresa.where(st_category_id: params[:categoria])
@@ -11,10 +12,23 @@ class SiteController < ApplicationController
       @q = params[:qq]
   elsif params[:bairro]
      @st_empresas  = StEmpresa.joins(:st_endereco).where(st_enderecos: {st_bairro_id: params[:bairro]})
-     @bairro = params[:bairro]
+ elsif params[:bairro_id]
+     @st_empresas  = StEmpresa.joins(:st_endereco).where(st_enderecos: {st_bairro_id: params[:bairro_id]})  
     else
  	    @st_empresas = StEmpresa.all
-    end  
+    end
+
+
+
+
+   if params[:bairro]
+     @bairro = params[:bairro]  
+   end
+   if params[:bairro_id]
+     @bairro = params[:bairro_id]  
+   end
+
+
   end
 
   def home  
