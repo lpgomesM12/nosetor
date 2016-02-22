@@ -1,6 +1,26 @@
 class StItemprodutosController < ApplicationController
   before_action :set_st_itemproduto, only: [:show, :edit, :update, :destroy]
 
+  
+  def carrega_item_produto
+     itemprodutos = StItemproduto.where(st_produto_id: params[:st_produto_id])
+     json_itemprodutos = itemprodutos.map { |item| {:id => item.id,
+                                                       :nome_item => item.st_item.nome_item,
+                                                       :numr_quatidade => item.numr_quatidade}}
+     render :json => json_itemprodutos
+  end 
+  
+  def salva_item_produto
+     @st_itemproduto = StItemproduto.new
+     @st_itemproduto.st_item_id = params[:id] 
+     @st_itemproduto.st_produto_id = params[:st_produto_id]
+     @st_itemproduto.numr_quatidade = params[:numr_quatidade]
+     @st_itemproduto.save
+
+     render :json => true    
+  end
+
+
   # GET /st_itemprodutos
   # GET /st_itemprodutos.json
   def index

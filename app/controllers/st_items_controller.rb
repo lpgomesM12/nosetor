@@ -1,6 +1,11 @@
 class StItemsController < ApplicationController
   before_action :set_st_item, only: [:show, :edit, :update, :destroy]
 
+
+  def busca_item
+     @results = StItem.search(params[:term]).order(:nome_item).limit(15)
+  end
+
   # GET /st_items
   # GET /st_items.json
   def index
@@ -69,6 +74,6 @@ class StItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def st_item_params
-      params.require(:st_item).permit(:nome_produto, :st_categoriaproduto_id)
+      params.require(:st_item).permit(:nome_item, :st_categoriaproduto_id)
     end
 end

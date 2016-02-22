@@ -76,15 +76,18 @@
 
 <%= f.fields_for :st_endereco do |endereco| %>
 
-
 <div class="row">  
-    <div class="col-lg-8">
+    <div class="col-lg-6">
       <%= endereco.label :nome_rua %><br>
       <%= endereco.text_field :nome_rua, :class => 'form-control' %>
     </div>
     <div class="col-lg-2">
       <%= endereco.label :Quadra %><br>
       <%= endereco.text_field :desc_quadra, :class => 'form-control' %>
+    </div> 
+    <div class="col-lg-2">
+      <%= endereco.label :Lote %><br>
+      <%= endereco.text_field :desc_lote, :class => 'form-control' %>
     </div>
 </div>
 <br>
@@ -160,7 +163,7 @@
          $('#nome_bairro').autocomplete({
          source: '/busca',
          dataType: 'json',
-         minLength: 1,
+         minLength: 0,
          change: function(event, ui) {
          if (!ui.item) {
          $('#nome_bairro').val('');

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160129151821) do
+ActiveRecord::Schema.define(version: 20160222003532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,15 +125,16 @@ ActiveRecord::Schema.define(version: 20160129151821) do
   create_table "st_itemprodutos", force: :cascade do |t|
     t.integer  "st_item_id"
     t.integer  "st_produto_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "numr_quatidade"
   end
 
   add_index "st_itemprodutos", ["st_item_id"], name: "index_st_itemprodutos_on_st_item_id", using: :btree
   add_index "st_itemprodutos", ["st_produto_id"], name: "index_st_itemprodutos_on_st_produto_id", using: :btree
 
   create_table "st_items", force: :cascade do |t|
-    t.string   "nome_produto"
+    t.string   "nome_item"
     t.integer  "st_categoriaproduto_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -160,6 +161,16 @@ ActiveRecord::Schema.define(version: 20160129151821) do
   add_index "st_produtos", ["user_alteracao"], name: "index_st_produtos_on_user_alteracao", using: :btree
   add_index "st_produtos", ["user_exclusao"], name: "index_st_produtos_on_user_exclusao", using: :btree
   add_index "st_produtos", ["user_inclusao"], name: "index_st_produtos_on_user_inclusao", using: :btree
+
+  create_table "st_tamanhoprodutos", force: :cascade do |t|
+    t.string   "desc_tamanho"
+    t.decimal  "valr_produto"
+    t.integer  "st_produto_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "st_tamanhoprodutos", ["st_produto_id"], name: "index_st_tamanhoprodutos_on_st_produto_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "nome"
@@ -192,4 +203,5 @@ ActiveRecord::Schema.define(version: 20160129151821) do
   add_foreign_key "st_items", "st_categoriaprodutos"
   add_foreign_key "st_produtos", "st_categoriaprodutos"
   add_foreign_key "st_produtos", "st_empresas"
+  add_foreign_key "st_tamanhoprodutos", "st_produtos"
 end

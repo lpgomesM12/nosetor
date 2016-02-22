@@ -1,84 +1,47 @@
 <div class="panel panel-default">
-  <div class="panel-heading" style="background:#e89980" align="center"><strong>Pizzas</strong></div>
 
-	 <div class="list-group">
+   <%titulo = false%>
+   <%nomeTitulo = ""%>
+   <% @st_produtos.each do |produto| %>   
+   
+   <%
+      if nomeTitulo != produto.st_categoriaproduto.nome_categoria          
+         nomeTitulo = produto.st_categoriaproduto.nome_categoria
+         titulo = true
+      else
+         titulo = false
+      end      
+   %>
+
+   <%if titulo%>      
+      <div class="panel-heading" style="background:#e89980" align="center"><strong><%=nomeTitulo%></strong></div>
+	<%end%>
+	<div class="list-group">	  
 	  	<a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
+	      <h4 class="list-group-item-heading"><%=produto.nome_produto%> 	    
+	    	 <small class="pull-right">        	    
+        	    <%produto.st_tamanhoproduto.order("desc_tamanho desc").each do |tamanho|%>
+                   <% if tamanho.desc_tamanho == "PEQUENO"%>
+                         <%tam = "P:"%>
+                      <%elsif tamanho.desc_tamanho == "MEDIO" %>
+                         <%tam = "M:"%>
+                      <%elsif tamanho.desc_tamanho == "GRANDE"%>
+                         <%tam = "G:"%>
+                   <%end%>
+                  <strong ><%=tam%> </strong><strong style="color:#6ae488"><%= number_to_currency(tamanho.valr_produto, unit: "R$", separator: ",", delimiter: "") %> </strong>                 
+        	    <%end%>
 	          </small>
 	       </h4>
 		    <p class="list-group-item-text">
 		    <small>
 		        <em>
-	               Cebola,milho,batata 
+	           <%produto.st_itemproduto.each do |item|%>
+	               <%=item.st_item.nome_item%>, 
+	            <%end%>
 		        </em>
 		    </small>
 		    </p>
-	    </a>
-
-	    <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-       	 <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-  </div>
-   <div class="panel-heading" align="center" style="background:#e89980"><strong>Sanduiches</strong></div>
-   <div class="list-group">
-       
-       	 <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-
-	    <a  id="panelCentral" class="list-group-item">
-	      <h4 class="list-group-item-heading">Portugueza 	    
-	    	 <small class="pull-right">
-        	      <strong style="color:#6ae488">R$:50.00</strong>
-	          </small>
-	       </h4>
-		    <p class="list-group-item-text">
-		    <small>
-		        <em>
-	               Cebola,milho,batata 
-		        </em>
-		    </small>
-		    </p>
-	    </a>
-   </div>
+	    </a>  
+     </div> 
+  <%end%>
 </div>

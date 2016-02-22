@@ -1,6 +1,6 @@
 <div class="panel panel-default" style="margin-top:60px">
-<div class="panel-heading" align="center"></div>	
-  <div class="panel-body">
+<div class="panel-heading" style="background:#e89980" align="center"></div>	
+  <div class="panel-body"> 
      <a href="#" class="pull-left" >
              <%= image_tag (@st_empresa.logo.url(:thumb))%>
      </a>
@@ -8,15 +8,14 @@
      <br>
      <hr>
    
+    <small><%=@st_empresa.st_endereco.nome_rua rescue nil%> Quadra <%=@st_empresa.st_endereco.desc_quadra  rescue nil%> Lote <%=@st_empresa.st_endereco.desc_lote  rescue nil%> - <%=@st_empresa.st_endereco.st_bairro.nome_bairro  rescue nil%>, <%=@st_empresa.st_endereco.st_cidade.nome_cidade  rescue nil%> - <%=@st_empresa.st_endereco.st_cidade.st_estado.nome_estado  rescue nil%></small><br>
 
-    <small><%=@st_empresa.st_endereco.nome_rua rescue nil%> Quadra <%=@st_empresa.st_endereco.desc_quadra  rescue nil%> Lote <%=@st_empresa.st_endereco.desc_lote  rescue nil%> - <%=st_empresa.st_endereco.st_bairro.nome_bairro  rescue nil%>, <%=@st_empresa.st_endereco.st_cidade.nome_cidade  rescue nil%> - <%=@st_empresa.st_endereco.st_cidade.st_estado.nome_estado  rescue nil%></small><br>
-
-     <small><%=@st_empresa.tele_telefone1%> |</small>
-     <small><%=@st_empresa.tele_telefone1%></small>	
+     Tel: <small><%=@st_empresa.tele_telefone1%> |</small>
+     <small><%=@st_empresa.tele_telefone2%></small>	
   </div>
 </div>
 
-<%if @st_empresa.st_category.id == 2%>
+<%if @st_empresa.st_category.nome_categoria == "Pizzarias"%>
    <%= render 'cardapio' %>
 <%end%>
 

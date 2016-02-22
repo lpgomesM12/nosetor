@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing St Tamanhoprodutos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Desc tamanho</th>
+      <th>Valr produto</th>
+      <th>St produtos</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @st_tamanhoprodutos.each do |st_tamanhoproduto| %>
+      <tr>
+        <td><%= st_tamanhoproduto.desc_tamanho %></td>
+        <td><%= st_tamanhoproduto.valr_produto %></td>
+        <td><%= st_tamanhoproduto.st_produtos %></td>
+        <td><%= link_to 'Show', st_tamanhoproduto %></td>
+        <td><%= link_to 'Edit', edit_st_tamanhoproduto_path(st_tamanhoproduto) %></td>
+        <td><%= link_to 'Destroy', st_tamanhoproduto, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New St tamanhoproduto', new_st_tamanhoproduto_path %>

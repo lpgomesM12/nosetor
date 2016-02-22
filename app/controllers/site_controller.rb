@@ -40,8 +40,10 @@ class SiteController < ApplicationController
   def show_empresa
     
     @st_empresa = StEmpresa.find(params[:id])
+    @st_produtos = StProduto.where(st_empresa_id: params[:id])
 
-     render layout: "show_empresa"
+
+    render layout: "show_empresa"
   
   end
 

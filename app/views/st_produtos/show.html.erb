@@ -1,24 +1,203 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome produto:</strong>
+  <strong>Categoria:</strong>
+  <%= @st_produto.st_categoriaproduto.nome_categoria %>
+</p>
+
+<p>
+  <strong>Nome:</strong>
   <%= @st_produto.nome_produto %>
 </p>
 
 <p>
-  <strong>Valr produto:</strong>
-  <%= @st_produto.valr_produto %>
+  <strong>Empresa:</strong>
+  <%= @st_produto.st_empresa.nome_empresa %>
 </p>
 
-<p>
-  <strong>St categoriaproduto:</strong>
-  <%= @st_produto.st_categoriaproduto %>
-</p>
 
-<p>
-  <strong>St empresa:</strong>
-  <%= @st_produto.st_empresa %>
-</p>
+<hr>
+<%= fields_for :st_produtoproduto do |tamanho| %>
 
-<%= link_to 'Edit', edit_st_produto_path(@st_produto) %> |
-<%= link_to 'Back', st_produtos_path %>
+<label>Cadastre os Tamanhos</label>      
+<div class="row">
+     <div class="col-lg-4">         
+          <%= tamanho.collection_select :desc_tamanho, StTamanhoproduto::TAMANHO, :to_s, :humanize, {}, {:class => "form-control"}%>
+     </div>
+
+     <div class="col-lg-2">
+         <div class="input-group">
+           <input type=
+           "text" id="valr_produto" name="valr_produto" placeholder="Valor" class="form-control" size="60">
+           <span class="input-group-btn">
+           <button class="btn btn-default" id="btnValor" name="btnValor" onclick="add_Tamanho()" type="button">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+          </span>
+        </div><!-- /input-group -->
+    </div>
+</div>    
+<%end%>
+
+<br>
+
+<div class="row">
+     <div class="col-lg-6">
+	 <table class="table table-hover table-condensed">
+	      <thead>
+	        <tr>
+	             <th>Tamanho</th>
+	             <th>Valor</th>
+	        </tr>
+        </tr>
+
+	      </thead>
+	      <tbody id="tbTamanho">
+
+	      </tbody>
+	    </table>
+	  </div>
+</div>
+
+<hr>
+ <br>
+
+      <label>Adicione os Ingredientes</label>      
+ <div class="row">
+     <div class="col-lg-4">
+     <input type="hidden" id="id_item" name="id_item">
+      <input type=
+           "text" id="nome_item" name="nome_item" class="form-control" size="60" onfocus="javascript:$(this).autocomplete('search','');" placeholder="Pesquise por ingredientes">
+        </div>
+    <div class="col-lg-2">
+         <div class="input-group">
+           <input type=
+           "text" id="numr_qtditem" name="numr_qtditem" placeholder="Quantidade" class="form-control" size="60">
+           <span class="input-group-btn">
+           <button class="btn btn-default" id="btnItem" name="btnItem" onclick="add_itemProduto()" type="button">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+          </span>
+        </div><!-- /input-group -->
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+     <div class="col-lg-6">
+	 <table class="table table-hover table-condensed">
+	      <thead>
+	        <tr>
+	        <th>Ingrediente</th>
+	        <th>Qtd.</th>
+	        </tr>
+	      </thead>
+	      <tbody id="wrap">
+
+	      </tbody>
+	    </table>
+	  </div>
+</div>
+
+<br>
+<br>
+
+
+<%= link_to 'Editar', edit_st_produto_path(@st_produto) %> |
+<%= link_to 'Voltar', st_produtos_path %>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+         $('#nome_item').autocomplete({
+         source: '/buscaItem',
+         dataType: 'json',
+         minLength: 0,
+         change: function(event, ui) {
+         if (!ui.item) {
+         $('#nome_item').val('');
+       }
+     },
+
+    select: function(event, ui) {
+    if (ui.item) {
+      $("#id_item").val(ui.item.id);
+      }
+     }
+    });
+   });
+
+  function add_itemProduto(){
+        $.ajax({
+          url: '<%= salvaItemProduto_path %>',
+          data : {
+            id : $("#id_item").val(),
+            st_produto_id : '<%= @st_produto.id%>',
+            numr_quatidade : $("#numr_qtditem").val()
+          },
+          success: function(data){
+               carrega_itens()
+          }
+        })
+    }
+
+
+  function add_Tamanho(){
+        $.ajax({
+          url: '<%= salvaTamanho_path %>',
+          data : {
+            valr_produto : $("#valr_produto").val(),
+            st_produto_id : '<%= @st_produto.id%>',
+            desc_tamanho : $("#st_produtoproduto_desc_tamanho").val()
+          },
+          success: function(data){
+               carrega_Tamanho()
+          }
+        })
+    }
+
+
+function carrega_itens(){
+     $.ajax({
+          url: '<%= carregaItemProduto_path %>',
+          data : {
+            st_produto_id : '<%= @st_produto.id%>'
+          },
+          success: function(data){
+          	 $("#wrap").empty();
+            for (var i in data) {
+              var item = data[i];
+           
+                var qtd = item.numr_quatidade == null? "1" : item.numr_quatidade
+
+               	$( "#wrap" ).append( "<tr><td>"+item.nome_item+"</td>"+
+               		                     "<td>"+qtd+"</td>"+
+               		                  "</tr>" );
+             };
+          }
+        })
+}
+
+
+function carrega_Tamanho(){
+     $.ajax({
+          url: '<%= carregaTamanho_path %>',
+          data : {
+            st_produto_id : '<%= @st_produto.id%>'
+          },
+          success: function(data){
+          	 $("#tbTamanho").empty();
+            for (var i in data) {
+              var item = data[i];
+               	$( "#tbTamanho" ).append( "<tr><td>"+item.desc_tamanho+"</td>"+
+               		                     "<td>"+item.valr_produto+"</td>"+
+               		                  "</tr>" );
+             };
+          }
+        })
+}
+
+
+carrega_itens();
+carrega_Tamanho();
+
+
+</script>

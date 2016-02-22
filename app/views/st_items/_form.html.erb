@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome_produto %><br>
-    <%= f.text_field :nome_produto %>
-  </div>
-  <div class="field">
-    <%= f.label :st_categoriaproduto_id %><br>
-    <%= f.text_field :st_categoriaproduto_id %>
-  </div>
-  <div class="actions">
+
+<div class="row">
+    <div class="col-lg-6">
+    <%= f.label :nome_item %><br>
+    <%= f.text_field :nome_item, :class => 'form-control' %>
+   </div>
+</div>
+
+<br/>
+
+<div class="actions">
     <%= f.submit %>
   </div>
 <% end %>

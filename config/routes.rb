@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :st_tamanhoprodutos
   resources :st_itemprodutos
   resources :st_items
   resources :st_produtos
@@ -16,7 +17,13 @@ Rails.application.routes.draw do
   get '/pesquisa', to: 'site#index', as: 'pesquisa'
   get 'busca' => 'st_bairros#search'
   get 'buscaCategoria' => 'st_categories#pesquisa_categoria'
+  get 'buscaItem' => 'st_items#busca_item'
   match '/listarCidade', to: 'st_cidades#get_cities', via: 'get'
+  match '/salvaItemProduto', to: 'st_itemprodutos#salva_item_produto', via: 'get'
+  match '/carregaItemProduto', to: 'st_itemprodutos#carrega_item_produto', via: 'get'
+  match '/salvaTamanho', to: 'st_tamanhoprodutos#salva_tamanho', via: 'get'
+  match '/carregaTamanho', to: 'st_tamanhoprodutos#carrega_tamanho', via: 'get'
+
   match '/contact', to: 'site#contact', via: 'get'
 
   get '/buscaLatLong', to: 'st_bairros#busca_lat_long', as: 'buscaLatLong'
