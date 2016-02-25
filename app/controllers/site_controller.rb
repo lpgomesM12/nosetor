@@ -12,14 +12,11 @@ class SiteController < ApplicationController
       @q = params[:qq]
   elsif params[:bairro]
      @st_empresas  = StEmpresa.joins(:st_endereco).where(st_enderecos: {st_bairro_id: params[:bairro]})
- elsif params[:bairro_id]
+  elsif params[:bairro_id]
      @st_empresas  = StEmpresa.joins(:st_endereco).where(st_enderecos: {st_bairro_id: params[:bairro_id]})  
     else
  	    @st_empresas = StEmpresa.all
     end
-
-
-
 
    if params[:bairro]
      @bairro = params[:bairro]  
@@ -27,7 +24,6 @@ class SiteController < ApplicationController
    if params[:bairro_id]
      @bairro = params[:bairro_id]  
    end
-
 
   end
 

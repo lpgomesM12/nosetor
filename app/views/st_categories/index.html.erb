@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th>Nome categoria</th>
+      <th>Ativo</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
     <% @st_categories.each do |st_category| %>
       <tr>
         <td><%= st_category.nome_categoria %></td>
+        <td><%= st_category.flag_ativo ? "Sim" : "Não" %></td>
         <td><%= link_to 'Show', st_category %></td>
         <td><%= link_to 'Edit', edit_st_category_path(st_category) %></td>
         <td><%= link_to 'Destroy', st_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>

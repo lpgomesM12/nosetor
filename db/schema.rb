@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222003532) do
+ActiveRecord::Schema.define(version: 20160223100001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20160222003532) do
     t.integer  "user_exclusao"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.boolean  "flag_ativo"
   end
 
   add_index "st_categories", ["integer"], name: "index_st_categories_on_integer", using: :btree

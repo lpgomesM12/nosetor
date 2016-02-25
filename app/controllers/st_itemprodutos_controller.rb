@@ -21,6 +21,14 @@ class StItemprodutosController < ApplicationController
   end
 
 
+  def exclui_item
+
+     @st_itemproduto = StItemproduto.find(params[:id])
+     @st_itemproduto.destroy
+     render :json => true
+  
+  end 
+
   # GET /st_itemprodutos
   # GET /st_itemprodutos.json
   def index

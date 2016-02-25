@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   match '/carregaItemProduto', to: 'st_itemprodutos#carrega_item_produto', via: 'get'
   match '/salvaTamanho', to: 'st_tamanhoprodutos#salva_tamanho', via: 'get'
   match '/carregaTamanho', to: 'st_tamanhoprodutos#carrega_tamanho', via: 'get'
+  match '/excluiTamanho', to: 'st_tamanhoprodutos#exclui_tamanho', via: 'get'
+  match '/excluiItem', to: 'st_itemprodutos#exclui_item', via: 'get'
+
+  
 
   match '/contact', to: 'site#contact', via: 'get'
 

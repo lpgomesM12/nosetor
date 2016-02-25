@@ -4,16 +4,32 @@ class StTamanhoprodutosController < ApplicationController
   # GET /st_tamanhoprodutos
   # GET /st_tamanhoprodutos.json
 
+  include ActionView::Helpers::NumberHelper
 
   def carrega_tamanho
      tamanhoproduto = StTamanhoproduto.where(st_produto_id: params[:st_produto_id])
      json_tamanhoproduto = tamanhoproduto.map { |item| {:id => item.id,
                                                        :desc_tamanho => item.desc_tamanho,
-                                                       :valr_produto => item.valr_produto}}
+                                                       :valr_produto => number_to_currency( item.valr_produto, unit: "R$", separator: ",", delimiter: ".")}}
+
      render :json => json_tamanhoproduto
   end 
 
+  def exclui_tamanho
+
+     @st_tamanhoproduto = StTamanhoproduto.find(params[:id])
+     @st_tamanhoproduto.destroy
+     render :json => true
+  
+  end 
+
+
   def salva_tamanho
+
+    params[:valr_produto] = params[:valr_produto].gsub('R$', '')
+    params[:valr_produto] = params[:valr_produto].gsub('.', '')
+    params[:valr_produto] = params[:valr_produto].gsub(',', '.').to_f
+
    @st_tamanhoproduto = StTamanhoproduto.new
    @st_tamanhoproduto.desc_tamanho = params[:desc_tamanho]
    @st_tamanhoproduto.st_produto_id = params[:st_produto_id]

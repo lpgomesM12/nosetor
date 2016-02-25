@@ -139,7 +139,6 @@
         })
     }
 
-
   function add_Tamanho(){
         $.ajax({
           url: '<%= salvaTamanho_path %>',
@@ -154,6 +153,29 @@
         })
     }
 
+  function exclui_item(id){
+        $.ajax({
+          url: '<%= excluiItem_path %>',
+          data : {
+            id : id,
+          },
+          success: function(data){
+               carrega_itens()
+          }
+        })
+    }
+
+  function exclui_tamanho(id){
+        $.ajax({
+          url: '<%= excluiTamanho_path %>',
+          data : {
+            id : id,
+          },
+          success: function(data){
+               carrega_Tamanho()
+          }
+        })
+    }
 
 function carrega_itens(){
      $.ajax({
@@ -170,12 +192,13 @@ function carrega_itens(){
 
                	$( "#wrap" ).append( "<tr><td>"+item.nome_item+"</td>"+
                		                     "<td>"+qtd+"</td>"+
+                                       "<td Align='right'><button type='button' onclick='exclui_item("+item.id+")' class='btn btn-default btn-xs' aria-label='Left Align'>" +
+                                       "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>" +
                		                  "</tr>" );
              };
           }
         })
 }
-
 
 function carrega_Tamanho(){
      $.ajax({
@@ -188,8 +211,10 @@ function carrega_Tamanho(){
             for (var i in data) {
               var item = data[i];
                	$( "#tbTamanho" ).append( "<tr><td>"+item.desc_tamanho+"</td>"+
-               		                     "<td>"+item.valr_produto+"</td>"+
-               		                  "</tr>" );
+               		                            "<td>"+item.valr_produto+"</td>"+
+                                              "<td Align='right'><button type='button' onclick='exclui_tamanho("+item.id+")'  class='btn btn-default btn-xs' aria-label='Left Align'>" +
+                                              "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span></button>" +
+               		                          "</tr>" );
              };
           }
         })
@@ -199,5 +224,8 @@ function carrega_Tamanho(){
 carrega_itens();
 carrega_Tamanho();
 
+  $(function() {
+     $("#valr_produto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+  })
 
 </script>

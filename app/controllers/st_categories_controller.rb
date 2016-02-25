@@ -74,6 +74,6 @@ class StCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def st_category_params
-      params.require(:st_category).permit(:nome_categoria)
+      params.require(:st_category).permit(:nome_categoria, :flag_ativo)
     end
 end
